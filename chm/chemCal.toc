@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package chemCal:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package chemCal:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="calplot">
+<param name="Local" value="calplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="calpredict">
+<param name="Local" value="calpredict.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="din32645">
+<param name="Local" value="din32645.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pahCalibration">
+<param name="Local" value="pahCalibration.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package chemCal:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Calibration data for HPLC measurement of 4 PAH">
+<param name="Local" value="pahCalibration.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Calibration data from DIN 32645">
+<param name="Local" value="din32645.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Estimate measurement results including confidence intervals">
+<param name="Local" value="calpredict.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot calibration graphs">
+<param name="Local" value="calplot.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

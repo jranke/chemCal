@@ -1,0 +1,12 @@
+Package: chemCal
+Version: 0.03-1
+Date: 2005-01-14
+Title: Calibration for analytical chemistry
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Maintainer: Johannes Ranke <jranke@uni-bremen.de>
+Depends: R
+Description: chemCal provides simple functions for plotting
+	calibration functions and for estimating standard errors for measurements.
+License: GPL version 2 or newer
+URL: http://www.r-project.org, 
+	http://www.uft.uni-bremen.de/chemie/ranke

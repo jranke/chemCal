@@ -1,0 +1,10 @@
+calm					Generate a linear calibration model
+calplot                 Plot calibration graphs
+plot.calm				Plot prediction bands
+calpredict              Estimate measurement results including
+                        confidence intervals
+predict.calm			Estimate measurement results including confidence 
+						intervals
+din32645                Calibration data from DIN 32645
+pahCalibration          Calibration data for HPLC measurement of 4 PAH
+pahMeasurements			Measurement data for HPLC measurement of 4 PAH
