@@ -5,7 +5,7 @@
 \description{
   Sample dataset to test the package.
 }
-\usage{data(pahCalibration)}
+\usage{data(din32645)}
 \format{
   A dataframe containing 10 rows of x and y values.
 }
