@@ -1,0 +1,12 @@
+library(chemCal)
+data(massart97ex3)
+attach(massart97ex3)
+xi <- levels(factor(x))
+yx <- split(y,factor(x))
+ybari <- sapply(yx,mean)
+si <- round(sapply(yx,sd),digits=2)
+wi <- round(1/(si^2),digits=3)
+data.frame(xi,ybari,si,wi)
+
+weights <- wi[factor(x)]
+m <- lm(y ~ x,w=weights)
