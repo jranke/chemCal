@@ -1,0 +1,87 @@
+\documentclass[a4paper]{article}
+%\VignetteIndexEntry{Short manual for the chemCal package}
+\newcommand{\chemCal}{{\tt chemCal}}
+\newcommand{\calplot}{{\tt calplot}}
+\newcommand{\calpredict}{{\tt calpredict}}
+\newcommand{\R}{{\tt R}}
+\usepackage{hyperref}
+
+\title{Basic calibration functions for analytical chemistry}
+\author{Johannes Ranke}
+
+\begin{document}
+\maketitle
+
+The \chemCal{} package was first designed in the course of a lecture and lab
+course on "analytics of organic trace contaminants" at the University of Bremen
+from October to December 2004. In the fall 2005, an email exchange with 
+Ron Wehrens led to the belief that it could be heavily improved if the
+inverse prediction method given in \cite{massart97} would be implemented,
+since it also covers the case of weighted regression.
+
+At the moment, the package only consists of two functions, working
+on univariate linear models of class \texttt{lm}.
+
+When calibrating an analytical method, the first task is to generate
+a suitable model. If we want to use the \chemCal{} functions, we
+will have to restrict ourselves to univariate, possibly weighted, linear
+regression so far.
+
+Once such a model has been created, the calibration can be graphically
+shown by using the \texttt{calplot} function:
+
+<<echo=TRUE,fig=TRUE>>=
+library(chemCal)
+data(massart97ex3)
+attach(massart97ex3)
+yx <- split(y,factor(x))
+ybar <- sapply(yx,mean)
+s <- round(sapply(yx,sd),digits=2)
+w <- round(1/(s^2),digits=3)
+weights <- w[factor(x)]
+m <- lm(y ~ x,w=weights)
+calplot(m)
+@
+
+This is a reproduction of Example 8 in \cite{massart97}. We can
+see the influence of the weighted regression on the confidence
+and prediction bands of the calibration.
+
+If we now want to predict a new x value from measured y values,
+we use the \texttt{inverse.predict} function:
+
+<<>>=
+inverse.predict(m,15,ws=1.67)
+@
+
+The weight \texttt{ws} assigned to the measured y value has to be 
+given by the user in the case of weighted regression. By default, 
+the mean of the weights used in the linear regression is used.
+
+\section*{Theory}
+Equation 8.28 in \cite{massart97} gives a general equation for predicting x
+from measurements of y according to the linear calibration function
+$ y = b_0 + b_1 \cdot x$:
+
+\begin{equation}
+s_{\hat{x_s}} = \frac{s_e}{b_1} \sqrt{\frac{1}{w_s m} + \frac{1}{\sum{w_i}} +
+    \frac{(\bar{y_s} - \bar{y_w})^2 \sum{w_i}}
+        {{b_1}^2 \left( \sum{w_i} \sum{w_i {x_i}^2} - {\left( \sum{ w_i x_i } \right)}^2 \right) }}
+\end{equation}
+
+with
+
+\begin{equation}
+s_e = \sqrt{ \frac{\sum w_i (y_i - \hat{y})^2}{n - 2}}
+\end{equation}
+
+
+\begin{thebibliography}{1}
+\bibitem{massart97}
+Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J.,
+Smeyers-Verbeke, J. 
+\newblock Handbook of Chemometrics and Qualimetrics: Part A,
+\newblock Elsevier, Amsterdam, 1997
+\end{thebibliography}
+
+\end{document}
