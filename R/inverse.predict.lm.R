@@ -20,6 +20,27 @@ inverse.predict.lm <- function(object, newdata,
   ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
   alpha=0.05, ss = "auto")
 {
+  if (length(object$weights) > 0) {
+    wx <- split(object$model$y,object$model$x)
+    w <- sapply(wx,mean)
+  } else {
+    w <- rep(1,length(split(object$model$y,object$model$x)))
+  }
+  .inverse.predict(object, newdata, ws, alpha, ss, w)
+}
+
+inverse.predict.rlm <- function(object, newdata, 
+  ws = mean(object$w), alpha=0.05, ss = "auto")
+{
+  wx <- split(object$weights,object$model$x)
+  w <- sapply(wx,mean)
+  .inverse.predict(object, newdata, ws, alpha, ss, w)
+}
+
+.inverse.predict <- function(object, newdata, 
+  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
+  alpha=0.05, ss = "auto", w)
+{
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")
 
@@ -33,12 +54,6 @@ inverse.predict.lm <- function(object, newdata,
   n <- length(yx)
   x <- as.numeric(names(yx))
   ybar <- sapply(yx,mean)
-  if (length(object$weights) > 0) {
-    wx <- split(object$weights,object$model$x)
-    w <- sapply(wx,mean)
-  } else {
-    w <- rep(1,n)
-  }
   yhatx <- split(object$fitted.values,object$model$x)
   yhat <- sapply(yhatx,mean)
   se <- sqrt(sum(w*(ybar - yhat)^2)/(n-2))
@@ -52,21 +67,7 @@ inverse.predict.lm <- function(object, newdata,
 
   ybarw <- sum(w * ybar)/sum(w)
 
-# The commented out code for sxhats is equation 8.28 without changes.  It has
-# been replaced by the code below, in order to be able to take into account a
-# precision in the sample measurements that differs from the precision in the
-# calibration samples.
-
-#  sxhats <- se/b1 * sqrt(
-#    1/(ws * m) + 
-#    1/sum(w) + 
-#    (ybars - ybarw)^2 * sum(w) /
-#      (b1^2 * (sum(w) * sum(w * x^2) - sum(w * x)^2))
-#  )
-
-# This is equation 8.28, but with the possibility to take into account a 
-# different precision measurement of the sample and standard solutions
-# in analogy to equation 8.26
+# This is an adapted form of equation 8.28 (see package vignette)
   sxhats <- 1/b1 * sqrt(
     ss^2/(ws * m) + 
     se^2 * (1/sum(w) + 

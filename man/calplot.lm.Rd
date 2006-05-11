@@ -13,8 +13,9 @@
 }
 \arguments{
   \item{object}{
-    A univariate model object of class \code{\link{lm}} with model formula
-    \code{y ~ x} or \code{y ~ x - 1}.
+    A univariate model object of class \code{\link{lm}} or 
+    \code{\link[MASS:rlm]{rlm}} 
+    with model formula \code{y ~ x} or \code{y ~ x - 1}.
   }
   \item{xlim}{
     The limits of the plot on the x axis.

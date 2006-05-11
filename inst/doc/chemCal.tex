@@ -9,6 +9,7 @@
 \title{Basic calibration functions for analytical chemistry}
 \author{Johannes Ranke}
 
+\usepackage{/usr/share/R/share/texmf/Sweave}
 \begin{document}
 \maketitle
 
@@ -30,18 +31,21 @@ regression so far.
 Once such a model has been created, the calibration can be graphically
 shown by using the \texttt{calplot} function:
 
-<<echo=TRUE,fig=TRUE>>=
-library(chemCal)
-data(massart97ex3)
-attach(massart97ex3)
-yx <- split(y,factor(x))
-ybar <- sapply(yx,mean)
-s <- round(sapply(yx,sd),digits=2)
-w <- round(1/(s^2),digits=3)
-weights <- w[factor(x)]
-m <- lm(y ~ x,w=weights)
-calplot(m)
-@
+\begin{Schunk}
+\begin{Sinput}
+> library(chemCal)
+> data(massart97ex3)
+> attach(massart97ex3)
+> yx <- split(y, factor(x))
+> ybar <- sapply(yx, mean)
+> s <- round(sapply(yx, sd), digits = 2)
+> w <- round(1/(s^2), digits = 3)
+> weights <- w[factor(x)]
+> m <- lm(y ~ x, w = weights)
+> calplot(m)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{chemCal-001}
 
 This is a reproduction of Example 8 in \cite{massart97}. We can
 see the influence of the weighted regression on the confidence
@@ -50,9 +54,24 @@ and prediction bands of the calibration.
 If we now want to predict a new x value from measured y values,
 we use the \texttt{inverse.predict} function:
 
-<<>>=
-inverse.predict(m,15,ws=1.67)
-@
+\begin{Schunk}
+\begin{Sinput}
+> inverse.predict(m, 15, ws = 1.67)
+\end{Sinput}
+\begin{Soutput}
+$Prediction
+[1] 5.865367
+
+$`Standard Error`
+[1] 10.66054
+
+$Confidence
+[1] 29.59840
+
+$`Confidence Limits`
+[1] -23.73303  35.46376
+\end{Soutput}
+\end{Schunk}
 
 The weight \texttt{ws} assigned to the measured y value has to be 
 given by the user in the case of weighted regression. By default, 

@@ -1,6 +1,7 @@
 \name{inverse.predict}
 \alias{inverse.predict}
 \alias{inverse.predict.lm}
+\alias{inverse.predict.rlm}
 \alias{inverse.predict.default}
 \title{Predict x from y for a linear calibration}
 \usage{inverse.predict(object, newdata, 
@@ -9,8 +10,9 @@
 }
 \arguments{
   \item{object}{
-    A univariate model object of class \code{\link{lm}} with model formula
-    \code{y ~ x} or \code{y ~ x - 1}.
+    A univariate model object of class \code{\link{lm}} or 
+    \code{\link[MASS:rlm]{rlm}} 
+    with model formula \code{y ~ x} or \code{y ~ x - 1}.
   }
   \item{newdata}{ 
     A vector of observed y values for one sample.
