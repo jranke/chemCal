@@ -30,7 +30,7 @@
     The label of the y axis.
   }
   \item{alpha}{
-    The confidence level for the confidence and prediction bands.
+    The error tolerance level for the confidence and prediction bands.
   }
 }
 \value{

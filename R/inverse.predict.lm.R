@@ -2,44 +2,47 @@
 # and Qualimetrics, Part A, Massart et al (1997), page 200, validated with
 # Example 8 on the same page
 
-inverse.predict <- function(object, newdata, 
-  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
-  alpha=0.05, ss = "auto")
+inverse.predict <- function(object, newdata, ...,
+  ws = "auto", alpha = 0.05, ss = "auto")
 {
   UseMethod("inverse.predict")
 }
 
-inverse.predict.default <- function(object, newdata, 
-  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
-  alpha=0.05, ss = "auto")
+inverse.predict.default <- function(object, newdata, ...,
+  ws = "auto", alpha = 0.05, ss = "auto")
 {
   stop("Inverse prediction only implemented for univariate lm objects.")
 }
 
-inverse.predict.lm <- function(object, newdata, 
-  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
-  alpha=0.05, ss = "auto")
+inverse.predict.lm <- function(object, newdata, ...,
+  ws = "auto", alpha = 0.05, ss = "auto")
 {
+  if (ws == "auto") {
+    ws <- ifelse(length(object$weights) > 0, mean(object$weights), 1)
+  }
   if (length(object$weights) > 0) {
-    wx <- split(object$model$y,object$model$x)
+    wx <- split(object$weights,object$model$x)
     w <- sapply(wx,mean)
   } else {
     w <- rep(1,length(split(object$model$y,object$model$x)))
   }
-  .inverse.predict(object, newdata, ws, alpha, ss, w)
+  .inverse.predict(object = object, newdata = newdata, 
+    ws = ws, alpha = alpha, ss = ss, w = w)
 }
 
-inverse.predict.rlm <- function(object, newdata, 
-  ws = mean(object$w), alpha=0.05, ss = "auto")
+inverse.predict.rlm <- function(object, newdata, ...,
+  ws = "auto", alpha = 0.05, ss = "auto")
 {
+  if (ws == "auto") {
+    ws <- mean(object$w)
+  }
   wx <- split(object$weights,object$model$x)
   w <- sapply(wx,mean)
-  .inverse.predict(object, newdata, ws, alpha, ss, w)
+  .inverse.predict(object = object, newdata = newdata, 
+    ws = ws, alpha = alpha, ss = ss, w = w)
 }
 
-.inverse.predict <- function(object, newdata, 
-  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
-  alpha=0.05, ss = "auto", w)
+.inverse.predict <- function(object, newdata, ws, alpha, ss, w)
 {
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")

@@ -4,9 +4,8 @@
 \alias{inverse.predict.rlm}
 \alias{inverse.predict.default}
 \title{Predict x from y for a linear calibration}
-\usage{inverse.predict(object, newdata, 
-  ws = ifelse(length(object$weights) > 0, mean(object$weights), 1),
-  alpha=0.05, ss = "auto")
+\usage{inverse.predict(object, newdata, \dots,
+  ws, alpha=0.05, ss = "auto")
 }
 \arguments{
   \item{object}{
@@ -17,12 +16,16 @@
   \item{newdata}{ 
     A vector of observed y values for one sample.
   }
+  \item{\dots}{
+    Placeholder for further arguments that might be needed by 
+    future implementations.
+  }
   \item{ws}{ 
     The weight attributed to the sample. The default is to take the 
     mean of the weights in the model, if there are any.
   }
   \item{alpha}{
-    The confidence level for the confidence interval to be reported.
+    The error tolerance level for the confidence interval to be reported.
   }
   \item{ss}{
     The estimated standard error of the sample measurements. The 
@@ -62,6 +65,6 @@ w <- round(1/(s^2),digits=3)
 weights <- w[factor(x)]
 m <- lm(y ~ x,w=weights)
 
-inverse.predict(m,c(15))
+inverse.predict(m,15,ws = 1.67)
 }
 \keyword{manip}

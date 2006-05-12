@@ -1,4 +1,3 @@
-library(chemCal)
 data(massart97ex3)
 attach(massart97ex3)
 xi <- levels(factor(x))
@@ -8,5 +7,6 @@ si <- round(sapply(yx,sd),digits=2)
 wi <- round(1/(si^2),digits=3)
 weights <- wi[factor(x)]
 m <- lm(y ~ x,w=weights)
-inverse.predict(m,15)
-inverse.predict(m,90)
+inverse.predict(m, 15, ws = 1.67)
+inverse.predict(m, 90, ws = 0.145)
+calplot(m)

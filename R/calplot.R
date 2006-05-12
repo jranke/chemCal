@@ -27,7 +27,7 @@ calplot.lm <- function(object, xlim = "auto", ylim = "auto",
   pred.lim <- predict(m, newdata, interval = "prediction",level=level)
   conf.lim <- predict(m, newdata, interval = "confidence",level=level)
   if (xlim == "auto") xlim = c(0,max(x))
-  if (ylim == "auto") ylim = range(c(pred.lim,y))
+  if (ylim == "auto") ylim = range(c(pred.lim,y,0))
   plot(1,
     type = "n", 
     xlab = xlab,
