@@ -55,11 +55,12 @@ inverse.predict.rlm <- function(object, newdata, ...,
 
   yx <- split(object$model$y,object$model$x)
   n <- length(yx)
+  df <- n - length(objects$coef)
   x <- as.numeric(names(yx))
   ybar <- sapply(yx,mean)
   yhatx <- split(object$fitted.values,object$model$x)
   yhat <- sapply(yhatx,mean)
-  se <- sqrt(sum(w*(ybar - yhat)^2)/(n-2))
+  se <- sqrt(sum(w*(ybar - yhat)^2)/df)
   if (ss == "auto") {
     ss <- se
   } else {

@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2006.4.5)  12 MAY 2006 23:59
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2006.4.8)  15 MAY 2006 23:41
 entering extended mode
 **chemCal.tex
 (./chemCal.tex
@@ -325,8 +325,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2 <./chemCal-001.pdf>]
 [3] (./chemCal.aux) ) 
 Here is how much of TeX's memory you used:
- 3764 strings out of 94499
- 51832 string characters out of 1175814
+ 3764 strings out of 94500
+ 51832 string characters out of 1175772
  96290 words of memory out of 1000000
  6863 multiletter control sequences out of 10000+50000
  21774 words of font info for 52 fonts, out of 500000 for 2000
@@ -346,4 +346,4 @@ type1/bluesky/cm/cmbx12.pfb> </var/cache/fonts/pk/ljfour/jknappen/tc/tctt1000.6
 xmf-tetex/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf-tetex/fonts/type1
 /bluesky/cm/cmr10.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmr12.pfb>
 </usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmr17.pfb>
-Output written on chemCal.pdf (3 pages, 107518 bytes).
+Output written on chemCal.pdf (3 pages, 107539 bytes).
