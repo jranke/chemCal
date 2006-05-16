@@ -17,32 +17,36 @@ inverse.predict.default <- function(object, newdata, ...,
 inverse.predict.lm <- function(object, newdata, ...,
   ws = "auto", alpha = 0.05, ss = "auto")
 {
+  yname = names(object$model)[[1]]
+  xname = names(object$model)[[2]]
   if (ws == "auto") {
     ws <- ifelse(length(object$weights) > 0, mean(object$weights), 1)
   }
   if (length(object$weights) > 0) {
-    wx <- split(object$weights,object$model$x)
+    wx <- split(object$weights,object$model[[xname]])
     w <- sapply(wx,mean)
   } else {
-    w <- rep(1,length(split(object$model$y,object$model$x)))
+    w <- rep(1,length(split(object$model[[yname]],object$model[[xname]])))
   }
   .inverse.predict(object = object, newdata = newdata, 
-    ws = ws, alpha = alpha, ss = ss, w = w)
+    ws = ws, alpha = alpha, ss = ss, w = w, xname = xname, yname = yname)
 }
 
 inverse.predict.rlm <- function(object, newdata, ...,
   ws = "auto", alpha = 0.05, ss = "auto")
 {
+  yname = names(object$model)[[1]]
+  xname = names(object$model)[[2]]
   if (ws == "auto") {
     ws <- mean(object$w)
   }
-  wx <- split(object$weights,object$model$x)
+  wx <- split(object$weights,object$model[[xname]])
   w <- sapply(wx,mean)
   .inverse.predict(object = object, newdata = newdata, 
-    ws = ws, alpha = alpha, ss = ss, w = w)
+    ws = ws, alpha = alpha, ss = ss, w = w, xname = xname, yname = yname)
 }
 
-.inverse.predict <- function(object, newdata, ws, alpha, ss, w)
+.inverse.predict <- function(object, newdata, ws, alpha, ss, w, xname, yname)
 {
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")
@@ -53,12 +57,12 @@ inverse.predict.rlm <- function(object, newdata, ...,
   ybars <- mean(newdata)
   m <- length(newdata)
 
-  yx <- split(object$model$y,object$model$x)
+  yx <- split(object$model[[yname]],object$model[[xname]])
   n <- length(yx)
   df <- n - length(objects$coef)
   x <- as.numeric(names(yx))
   ybar <- sapply(yx,mean)
-  yhatx <- split(object$fitted.values,object$model$x)
+  yhatx <- split(object$fitted.values,object$model[[xname]])
   yhat <- sapply(yhatx,mean)
   se <- sqrt(sum(w*(ybar - yhat)^2)/df)
   if (ss == "auto") {
@@ -67,7 +71,7 @@ inverse.predict.rlm <- function(object, newdata, ...,
     ss <- ss
   }
 
-  b1 <- object$coef[["x"]]
+  b1 <- object$coef[[xname]]
 
   ybarw <- sum(w * ybar)/sum(w)
 

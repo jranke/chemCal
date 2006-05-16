@@ -3,14 +3,9 @@
 \alias{lod.lm}
 \alias{lod.rlm}
 \alias{lod.default}
-\alias{loq}
-\alias{loq.lm}
-\alias{loq.rlm}
-\alias{loq.default}
-\title{Estimate a limit of detection (LOD) or quantification (LOQ)}
+\title{Estimate a limit of detection (LOD)}
 \usage{
-  lod(object, \dots, alpha = 0.05, k = 1, n = 1, w = "auto")
-  loq(object, \dots, alpha = 0.05, k = 3, n = 1, w = "auto")
+  lod(object, \dots, alpha = 0.05, beta = 0.05)
 }
 \arguments{
   \item{object}{
@@ -19,40 +14,42 @@
     with model formula \code{y ~ x} or \code{y ~ x - 1}, 
     optionally from a weighted regression.
   }
-  \item{alpha}{
-    The error tolerance for the prediction of x values in the calculation.
-  }
   \item{\dots}{
     Placeholder for further arguments that might be needed by 
     future implementations.
   }
-  \item{k}{ 
-    The inverse of the maximum relative error tolerated at the
-    desired LOD/LOQ.
+  \item{alpha}{
+    The error tolerance for the decision limit (critical value).
   }
-  \item{n}{
-    The number of replicate measurements for which the LOD/LOQ should be
-    specified.
-  }
-  \item{w}{
-    The weight that should be attributed to the LOD/LOQ. Defaults
-    to one for unweighted regression, and to the mean of the weights
-    for weighted regression. See \code{\link{massart97ex3}} for 
-    an example how to take advantage of knowledge about the variance function.
+  \item{beta}{
+    The error tolerance beta for the detection limit.
   }
 }
 \value{
-  The estimated limit of detection for a model used for calibration.
-}
+  A list containig the corresponding x and y values of the estimated limit of
+  detection of a model used for calibration.  }
 \description{
-  A useful operationalisation of a lower limit L of a measurement method is
-  simply the solution of the equation
-    \deqn{L = k c(L)}{L = k * c(L)}
-  where c(L) is half of the lenght of the confidence interval at the limit L.
+  The decision limit (German: Nachweisgrenze) is defined as the signal or
+  analyte concentration that is significantly different from the blank signal
+  with a first order error alpha (one-sided significance test).
+  The detection limit, or more precise, the minimum detectable value 
+  (German: Erfassungsgrenze), is then defined as the signal or analyte
+  concentration where the probability that the signal is not detected although
+  the analyte is present (type II or false negative error), is beta (also a
+  one-sided significance test).
+}
+\references{
+  J. Inczedy, T. Lengyel, and A.M. Ure (2002) International Union of Pure and
+  Applied Chemistry Compendium of Analytical Nomenclature: Definitive Rules.
+  Web edition.
 }
 \examples{
   data(din32645)
   m <- lm(y ~ x, data = din32645)
-  lod(m)
+  # The decision limit (critical value) is obtained by using beta = 0.5:
+  lod(m, alpha = 0.01, beta = 0.5) # approx. Nachweisgrenze in Dintest 2002
+  lod(m, alpha = 0.01, beta = 0.01) 
+  # In the latter case (Erfassungsgrenze), we get a slight deviation from 
+  # Dintest 2002 test data.
 }
 \keyword{manip}

@@ -10,18 +10,25 @@ lod.default <- function(object, ..., alpha = 0.05, beta = 0.05)
 
 lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05)
 {
-  y0 <- predict(object, data.frame(x = 0), interval="prediction", 
-      level = 1 - alpha)
+  xname <- names(object$model)[[2]]
+  newdata <- data.frame(0)
+  names(newdata) <- xname
+  y0 <- predict(object, newdata, interval="prediction", 
+      level = 1 - 2 * alpha )
   yc <- y0[[1,"upr"]]
   xc <- inverse.predict(object,yc)[["Prediction"]]
   f <- function(x)
   {
-      # Here I need the variance of y values as a function of x or
-      # y values
-      # Strangely, setting the confidence level to 0.5 does not result
-      # in a zero confidence or prediction interval
+    newdata <- data.frame(x)
+    names(newdata) <- xname
+    pi.y <- predict(object, newdata, interval = "prediction",
+      level = 1 - 2 * beta)
+    yd <- pi.y[[1,"lwr"]]
+    (yd - yc)^2
   }
-  lod.x <- optimize(f,interval=c(0,max(object$model$x)))$minimum
-  lod.y <-  predict(object, data.frame(x = lod.x))
+  lod.x <- optimize(f,interval=c(0,max(object$model[[xname]])))$minimum
+  newdata <- data.frame(x = lod.x)
+  names(lod.x) <- xname
+  lod.y <-  predict(object, data.frame(lod.x))
   return(list(x = lod.x, y = lod.y))
 }

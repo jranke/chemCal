@@ -21,9 +21,10 @@ calplot.lm <- function(object, xlim = "auto", ylim = "auto",
 
   m <- object
   level <- 1 - alpha
-  x <- m$model$x
-  y <- m$model$y
-  newdata <- data.frame(x = seq(0,max(x),length=250))
+  y <- m$model[[1]]
+  x <- m$model[[2]]
+  newdata <- list(x = seq(0,max(x),length=250))
+  names(newdata) <- names(m$model)[[2]]
   pred.lim <- predict(m, newdata, interval = "prediction",level=level)
   conf.lim <- predict(m, newdata, interval = "confidence",level=level)
   if (xlim == "auto") xlim = c(0,max(x))
@@ -36,9 +37,9 @@ calplot.lm <- function(object, xlim = "auto", ylim = "auto",
     ylim = ylim
   )
   points(x,y, pch = 21, bg = "yellow")
-  matlines(newdata$x, pred.lim, lty = c(1, 4, 4), 
+  matlines(newdata[[1]], pred.lim, lty = c(1, 4, 4), 
     col = c("black", "red", "red"))
-  matlines(newdata$x, conf.lim, lty = c(1, 3, 3), 
+  matlines(newdata[[1]], conf.lim, lty = c(1, 3, 3), 
     col = c("black", "green4", "green4"))
 
   legend(min(x), 

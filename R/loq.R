@@ -5,7 +5,7 @@ loq <- function(object, ..., alpha = 0.05, k = 3, n = 1, w = "auto")
 
 loq.default <- function(object, ..., alpha = 0.05, k = 3, n = 1, w = "auto")
 {
-  stop("lod is only implemented for univariate lm objects.")
+  stop("loq is only implemented for univariate lm objects.")
 }
 
 loq.lm <- function(object, ..., alpha = 0.05, k = 3, n = 1, w = "auto")
