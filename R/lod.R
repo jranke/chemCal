@@ -29,6 +29,6 @@ lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05)
   lod.x <- optimize(f,interval=c(0,max(object$model[[xname]])))$minimum
   newdata <- data.frame(x = lod.x)
   names(lod.x) <- xname
-  lod.y <-  predict(object, data.frame(lod.x))
+  lod.y <-  predict(object, newdata = lod.x)
   return(list(x = lod.x, y = lod.y))
 }
