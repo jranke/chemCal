@@ -23,18 +23,22 @@ m <- lm(y ~ x,w=weights)
 inverse.predict(m, 15, ws = 1.67)
 inverse.predict(m, 90, ws = 0.145)
 
-calplot(m)
+# Some of the following examples are commented out, because the require
+# prediction intervals from predict.lm for weighted models, which is not
+# available in R at the moment.
+
+#calplot(m)
 
 m0 <- lm(y ~ x)
 lod(m0)
-lod(m)
+#lod(m)
 
 # Now we want to take advantage of the lower weights at lower y values
-m2 <- lm(y ~ x, w = 1/y)
+#m2 <- lm(y ~ x, w = 1/y)
 # To get a reasonable weight for the lod, we need to estimate it and predict 
 # a y value for it
-yhat.lod <- predict(m,data.frame(x = lod(m2)))
-lod(m2,w=1/yhat.lod,k=3)
+#yhat.lod <- predict(m,data.frame(x = lod(m2)))
+#lod(m2,w=1/yhat.lod,k=3)
 }
 \source{
   Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J., 

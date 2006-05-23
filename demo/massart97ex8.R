@@ -9,4 +9,4 @@ weights <- wi[factor(x)]
 m <- lm(y ~ x,w=weights)
 inverse.predict(m, 15, ws = 1.67)
 inverse.predict(m, 90, ws = 0.145)
-calplot(m)
+#calplot(m)

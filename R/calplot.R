@@ -24,11 +24,10 @@ calplot.lm <- function(object,
 
   if (length(object$weights) > 0) {
     stop(paste(
-      "\nConfidence and prediction intervals for weighted linear models require",
-      "weights for the x values from which the predictions are to be generated.",
-      "This is not supported by the internally used predict.lm method.",
-      sep = "\n"
-    ))
+     "\nConfidence and prediction intervals for weighted linear models require",
+     "weights for the x values from which the predictions are to be generated.",
+     "This is not supported by the internally used predict.lm method.",
+        sep = "\n"))
   }
 
   if (alpha <= 0 | alpha >= 1)
@@ -40,8 +39,9 @@ calplot.lm <- function(object,
   x <- m$model[[2]]
   if (xlim[1] == "auto") xlim[1] <- 0
   if (xlim[2] == "auto") xlim[2] <- max(x)
+  xlim <- as.numeric(xlim)
   newdata <- list(
-    x = seq(from = xlim[1], to = xlim[2], length=250))
+    x = seq(from = xlim[[1]], to = xlim[[2]], length=250))
   names(newdata) <- names(m$model)[[2]]
   if (is.null(varfunc)) {
     varfunc <- if (length(m$weights)) {

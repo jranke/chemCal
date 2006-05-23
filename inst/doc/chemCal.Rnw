@@ -1,9 +1,5 @@
 \documentclass[a4paper]{article}
 %\VignetteIndexEntry{Short manual for the chemCal package}
-\newcommand{\chemCal}{{\tt chemCal}}
-\newcommand{\calplot}{{\tt calplot}}
-\newcommand{\calpredict}{{\tt calpredict}}
-\newcommand{\R}{{\tt R}}
 \usepackage{hyperref}
 
 \title{Basic calibration functions for analytical chemistry}
@@ -12,24 +8,15 @@
 \begin{document}
 \maketitle
 
-The \chemCal{} package was first designed in the course of a lecture and lab
-course on "analytics of organic trace contaminants" at the University of Bremen
-from October to December 2004. In the fall 2005, an email exchange with 
-Ron Wehrens led to the belief that it could be heavily improved if the
-inverse prediction method given in \cite{massart97} would be implemented,
-since it also covers the case of weighted regression.
-
-At the moment, the package consists of three functions, working
-on univariate linear models of class \texttt{lm} or \texttt{rlm}.
-
 When calibrating an analytical method, the first task is to generate
-a suitable model. If we want to use the \chemCal{} functions, we
-will have to restrict ourselves to univariate, possibly weighted, linear
-regression so far.
-
-For the weighted case, the function \code{predict.lm} had to be 
-rewritten, in order to allow for weights for the x values used to 
-predict the y values.
+a suitable model. If we want to use the \texttt{chemCal} functions, we
+will have to restrict ourselves to univariate, possibly weighted
+\footnote{
+For the weighted case, the function \texttt{predict.lm} would have to be 
+adapted (Bug report PR\#8877), in order to allow for weights for the x values
+used to predict the y values. This affects the functions \texttt{calplot}
+and \texttt{lod}.
+}, linear regression so far.
 
 Once such a model has been created, the calibration can be graphically
 shown by using the \texttt{calplot} function:
@@ -38,26 +25,46 @@ shown by using the \texttt{calplot} function:
 library(chemCal)
 data(massart97ex3)
 attach(massart97ex3)
-m <- lm(y ~ x, w = rep(0.01,length(x)))
-calplot(m)
+m0 <- lm(y ~ x)
+calplot(m0)
 @
 
-This is a reproduction of Example 8 in \cite{massart97}. We can
-see the influence of the weighted regression on the confidence
-and prediction bands of the calibration.
+As we can see, the scatter increases with increasing x. This is also
+illustrated by one of the diagnostic plots for linear models 
+provided by R: 
+
+<<echo=TRUE,fig=TRUE>>=
+plot(m0,which=3)
+@
+
+Therefore, in Example 8 in \cite{massart97} weighted regression
+is proposed which can be reproduced by
+
+<<>>=
+yx <- split(y,x)
+ybar <- sapply(yx,mean)
+s <- round(sapply(yx,sd),digits=2)
+w <- round(1/(s^2),digits=3)
+weights <- w[factor(x)]
+m <- lm(y ~ x,w=weights)
+@
+
+Unfortunately, \texttt{calplot} does not work on weighted linear models,
+as noted in the footnote above.
 
 If we now want to predict a new x value from measured y values,
 we use the \texttt{inverse.predict} function:
 
 <<>>=
 inverse.predict(m,15,ws=1.67)
+inverse.predict(m, 90, ws = 0.145)
 @
 
 The weight \texttt{ws} assigned to the measured y value has to be 
 given by the user in the case of weighted regression. By default, 
 the mean of the weights used in the linear regression is used.
 
-\section*{Theory}
+\section*{Theory for \texttt{inverse.predict}}
 Equation 8.28 in \cite{massart97} gives a general equation for predicting the
 standard error $s_{\hat{x_s}}$ for an x value predicted from measurements of y
 according to the linear calibration function $ y = b_0 + b_1 \cdot x$:
@@ -65,7 +72,8 @@ according to the linear calibration function $ y = b_0 + b_1 \cdot x$:
 \begin{equation}
 s_{\hat{x_s}} = \frac{s_e}{b_1} \sqrt{\frac{1}{w_s m} + \frac{1}{\sum{w_i}} +
     \frac{(\bar{y_s} - \bar{y_w})^2 \sum{w_i}}
-        {{b_1}^2 \left( \sum{w_i} \sum{w_i {x_i}^2} - {\left( \sum{ w_i x_i } \right)}^2 \right) }}
+        {{b_1}^2 \left( \sum{w_i} \sum{w_i {x_i}^2} - 
+            {\left( \sum{ w_i x_i } \right)}^2 \right) }}
 \end{equation}
 
 with
@@ -85,9 +93,9 @@ $y_i$, and $x_i$ is the given $x$ value for standard $i$.
 The weight $w_s$ for the sample should be estimated or calculated in accordance
 to the weights used in the linear regression. 
 
-I adjusted the above equation in order to be able to take a different precisions
-in standards and samples into account. In analogy to Equation 8.26 from \cite{massart97}
-we get
+I adjusted the above equation in order to be able to take a different
+precisions in standards and samples into account. In analogy to Equation 8.26
+from \cite{massart97} we get
 
 \begin{equation}
 s_{\hat{x_s}} = \frac{1}{b_1} \sqrt{\frac{{s_s}^2}{w_s m} + 

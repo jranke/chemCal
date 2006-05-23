@@ -2,16 +2,16 @@
 \alias{chemCal-package}
 \docType{package}
 \title{
-Calibration functions for analytical chemistry
+  Calibration functions for analytical chemistry
 }
 \description{
-See \url{../DESCRIPTION}
+  See \url{../DESCRIPTION}
 }
 \details{
-There is a package vignette located in \url{../doc/chemCal.pdf}.
+  There is a package vignette located in \url{../doc/chemCal.pdf}.
 }
 \author{
-Author and Maintainer: Johannes Ranke <jranke@uni-bremen.de>
+  Author and Maintainer: Johannes Ranke <jranke@uni-bremen.de>
 }
 \keyword{manip}
 }

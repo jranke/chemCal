@@ -8,8 +8,9 @@
   as prediction and confidence bands. 
 }
 \usage{
-  calplot(object, xlim = "auto", ylim = "auto", 
-  xlab = "Concentration", ylab = "Response", alpha=0.05)
+  calplot(object, xlim = c("auto","auto"), ylim = c("auto","auto"),
+  xlab = "Concentration", ylab = "Response", alpha=0.05, 
+  varfunc = NULL)
 }
 \arguments{
   \item{object}{
@@ -32,22 +33,25 @@
   \item{alpha}{
     The error tolerance level for the confidence and prediction bands.
   }
+  \item{varfunc}{
+    The variance function for generating the weights in the model.
+    Currently, this argument is ignored (see note below).
+  }
 }
 \value{
   A plot of the calibration data, of your fitted model as well as lines showing
   the confidence limits as well as the prediction limits.
 } 
+\note{
+  Prediction bands for models from weighted linear regression require weights
+  for the data, for which responses should be predicted. Prediction intervals
+  for weighted models are not currently supported by the internally used
+  function \code{\link{predict.lm}}, therefore, \code{calplot} refuses to work
+  for such models.
+}
 \examples{
-# Example of a Calibration plot for a weighted regression
-source("/home/ranke/tmp/r-base-2.3.0/src/library/stats/R/lm.R")
 data(massart97ex3)
-attach(massart97ex3)
-yx <- split(y,factor(x))
-s <- round(sapply(yx,sd),digits=2)
-w <- round(1/(s^2),digits=3)
-weights <- w[factor(x)]
-m <- lm(y ~ x,w=10 * weights)
-calplot(m)
+m <- lm(y ~ x, data=massart97ex3)
 calplot(m)
 }
 \author{
