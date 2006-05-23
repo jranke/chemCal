@@ -19,13 +19,17 @@ Ron Wehrens led to the belief that it could be heavily improved if the
 inverse prediction method given in \cite{massart97} would be implemented,
 since it also covers the case of weighted regression.
 
-At the moment, the package only consists of two functions, working
+At the moment, the package consists of three functions, working
 on univariate linear models of class \texttt{lm} or \texttt{rlm}.
 
 When calibrating an analytical method, the first task is to generate
 a suitable model. If we want to use the \chemCal{} functions, we
 will have to restrict ourselves to univariate, possibly weighted, linear
 regression so far.
+
+For the weighted case, the function \code{predict.lm} had to be 
+rewritten, in order to allow for weights for the x values used to 
+predict the y values.
 
 Once such a model has been created, the calibration can be graphically
 shown by using the \texttt{calplot} function:
@@ -34,12 +38,7 @@ shown by using the \texttt{calplot} function:
 library(chemCal)
 data(massart97ex3)
 attach(massart97ex3)
-yx <- split(y,factor(x))
-ybar <- sapply(yx,mean)
-s <- round(sapply(yx,sd),digits=2)
-w <- round(1/(s^2),digits=3)
-weights <- w[factor(x)]
-m <- lm(y ~ x,w=weights)
+m <- lm(y ~ x, w = rep(0.01,length(x)))
 calplot(m)
 @
 

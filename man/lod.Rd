@@ -38,18 +38,35 @@
   the analyte is present (type II or false negative error), is beta (also a
   one-sided significance test).
 }
+\note{
+  - The default values for alpha and beta are recommended by IUPAC.
+  - The estimation of the LOD in terms of the analyte amount/concentration
+    xD from the LOD in the signal domain SD is done by simply inverting the
+    calibration function (i.e. assuming a known calibration function).
+}
 \references{
+  Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J., 
+  Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and Qualimetrics: Part A,
+  Chapter 13.7.8 
+
   J. Inczedy, T. Lengyel, and A.M. Ure (2002) International Union of Pure and
   Applied Chemistry Compendium of Analytical Nomenclature: Definitive Rules.
   Web edition.
+
+  Currie, L. A. (1997) Nomenclature in evaluation of analytical methods including
+  detection and quantification capabilities (IUPAC Recommendations 1995). 
+  Analytica Chimica Acta 391, 105 - 126.
 }
 \examples{
   data(din32645)
   m <- lm(y ~ x, data = din32645)
-  # The decision limit (critical value) is obtained by using beta = 0.5:
-  lod(m, alpha = 0.01, beta = 0.5) # approx. Nachweisgrenze in Dintest 2002
-  lod(m, alpha = 0.01, beta = 0.01) 
-  # In the latter case (Erfassungsgrenze), we get a slight deviation from 
-  # Dintest 2002 test data.
+  lod(m) 
+
+  # The critical value (decision limit, German Nachweisgrenze) can be obtained
+  # by using beta = 0.5:
+  lod(m, alpha = 0.01, beta = 0.5)
+  # or approximated by 
+  2 * lod(m, alpha = 0.01, beta = 0.5)$x
+  # for the case of known, constant variance (homoscedastic data)
 }
 \keyword{manip}

@@ -1,20 +1,35 @@
-calplot <- function(object, xlim = "auto", ylim = "auto", 
-  xlab = "Concentration", ylab = "Response", alpha=0.05)
+calplot <- function(object, 
+  xlim = c("auto","auto"), ylim = c("auto","auto"), 
+  xlab = "Concentration", ylab = "Response", alpha=0.05,
+  varfunc = NULL)
 {
   UseMethod("calplot")
 }
 
-calplot.default <- function(object, xlim = "auto", ylim = "auto", 
-  xlab = "Concentration", ylab = "Response", alpha=0.05)
+calplot.default <- function(object, 
+  xlim = c("auto","auto"), ylim = c("auto","auto"), 
+  xlab = "Concentration", ylab = "Response",
+  alpha=0.05, varfunc = NULL)
 {
   stop("Calibration plots only implemented for univariate lm objects.")
 }
 
-calplot.lm <- function(object, xlim = "auto", ylim = "auto", 
-  xlab = "Concentration", ylab = "Response", alpha=0.05)
+calplot.lm <- function(object,
+  xlim = c("auto","auto"), ylim = c("auto","auto"), 
+  xlab = "Concentration", ylab = "Response", alpha=0.05,
+  varfunc = NULL)
 {
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")
+
+  if (length(object$weights) > 0) {
+    stop(paste(
+      "\nConfidence and prediction intervals for weighted linear models require",
+      "weights for the x values from which the predictions are to be generated.",
+      "This is not supported by the internally used predict.lm method.",
+      sep = "\n"
+    ))
+  }
 
   if (alpha <= 0 | alpha >= 1)
     stop("Alpha should be between 0 and 1 (exclusive)")
@@ -23,18 +38,29 @@ calplot.lm <- function(object, xlim = "auto", ylim = "auto",
   level <- 1 - alpha
   y <- m$model[[1]]
   x <- m$model[[2]]
-  newdata <- list(x = seq(0,max(x),length=250))
+  if (xlim[1] == "auto") xlim[1] <- 0
+  if (xlim[2] == "auto") xlim[2] <- max(x)
+  newdata <- list(
+    x = seq(from = xlim[1], to = xlim[2], length=250))
   names(newdata) <- names(m$model)[[2]]
-  pred.lim <- predict(m, newdata, interval = "prediction",level=level)
-  conf.lim <- predict(m, newdata, interval = "confidence",level=level)
-  if (xlim == "auto") xlim = c(0,max(x))
-  if (ylim == "auto") ylim = range(c(pred.lim,y,0))
+  if (is.null(varfunc)) {
+    varfunc <- if (length(m$weights)) {
+        function(variable) mean(m$weights)
+      } else function(variable) rep(1,250)
+  }
+  pred.lim <- predict(m, newdata, interval = "prediction",
+    level=level, weights.newdata = varfunc(m))
+  conf.lim <- predict(m, newdata, interval = "confidence",
+    level=level)
+  yrange.auto <- range(c(0,pred.lim))
+  if (ylim[1] == "auto") ylim[1] <- yrange.auto[1]
+  if (ylim[2] == "auto") ylim[2] <- yrange.auto[2]
   plot(1,
     type = "n", 
     xlab = xlab,
     ylab = ylab,
-    xlim = xlim,
-    ylim = ylim
+    xlim = as.numeric(xlim),
+    ylim = as.numeric(ylim)
   )
   points(x,y, pch = 21, bg = "yellow")
   matlines(newdata[[1]], pred.lim, lty = c(1, 4, 4), 

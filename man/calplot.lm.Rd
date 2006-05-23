@@ -39,13 +39,15 @@
 } 
 \examples{
 # Example of a Calibration plot for a weighted regression
+source("/home/ranke/tmp/r-base-2.3.0/src/library/stats/R/lm.R")
 data(massart97ex3)
 attach(massart97ex3)
 yx <- split(y,factor(x))
 s <- round(sapply(yx,sd),digits=2)
 w <- round(1/(s^2),digits=3)
 weights <- w[factor(x)]
-m <- lm(y ~ x,w=weights)
+m <- lm(y ~ x,w=10 * weights)
+calplot(m)
 calplot(m)
 }
 \author{

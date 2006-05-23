@@ -59,7 +59,7 @@ inverse.predict.rlm <- function(object, newdata, ...,
 
   yx <- split(object$model[[yname]],object$model[[xname]])
   n <- length(yx)
-  df <- n - length(objects$coef)
+  df <- n - length(object$coef)
   x <- as.numeric(names(yx))
   ybar <- sapply(yx,mean)
   yhatx <- split(object$fitted.values,object$model[[xname]])

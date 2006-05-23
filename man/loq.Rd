@@ -49,6 +49,11 @@
   limit of detection is the x value, where the relative error
   of the quantification with the given calibration model is 1/k.
 }
+\note{
+  IUPAC recommends to base the LOQ on the standard deviation of the
+  signal where x = 0. The approach taken here is to my knowledge
+  original to the chemCal package.
+}
 \examples{
   data(massart97ex3)
   attach(massart97ex3)
@@ -68,9 +73,9 @@
   mwy <- lm(y ~ x, w = 1/y)
 
   # Let's do this with one iteration only
-  loq(mwy, w = 1 / predict(mwy,list(x = loq(mwy))))
+  loq(mwy, w = 1 / predict(mwy,list(x = loq(mwy)$x)))
 
   # We can get better by doing replicate measurements
-  loq(mwy, n = 3, w = 1 / predict(mwy,list(x = loq(mwy))))
+  loq(mwy, n = 3, w = 1 / predict(mwy,list(x = loq(mwy)$x)))
 }
 \keyword{manip}
