@@ -2,8 +2,8 @@
 %âãÏÓ\r
 1 0 obj
 <<
-/CreationDate (D:20060623190820)
-/ModDate (D:20060623190820)
+/CreationDate (D:20060623184130)
+/ModDate (D:20060623184130)
 /Title (R Graphics Output)
 /Producer (R 2.3.1)
 /Creator (R)
@@ -53,12 +53,12 @@ Q q
 389.07 73.44 m 389.07 66.24 l S
 BT
 0.000 0.000 0.000 rg
-/F2 1 Tf 12.00 0.00 0.00 12.00 68.40 47.52 Tm (0) Tj
-/F2 1 Tf 12.00 0.00 0.00 12.00 128.53 47.52 Tm (10) Tj
-/F2 1 Tf 12.00 0.00 0.00 12.00 191.99 47.52 Tm (20) Tj
-/F2 1 Tf 12.00 0.00 0.00 12.00 255.46 47.52 Tm (30) Tj
-/F2 1 Tf 12.00 0.00 0.00 12.00 318.93 47.52 Tm (40) Tj
-/F2 1 Tf 12.00 0.00 0.00 12.00 382.39 47.52 Tm (50) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 68.40 47.52 Tm (0) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 128.53 47.52 Tm (10) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 191.99 47.52 Tm (20) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 255.46 47.52 Tm (30) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 318.93 47.52 Tm (40) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 382.39 47.52 Tm (50) Tj
 ET
 59.04 93.36 m 59.04 340.83 l S
 59.04 93.36 m 51.84 93.36 l S
@@ -84,7 +84,7 @@ S
 Q q
 BT
 0.000 0.000 0.000 rg
-/F2 1 Tf 12.00 0.00 0.00 12.00 193.11 18.72 Tm (Concentration) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 193.11 18.72 Tm (Concentration) Tj
 /F2 1 Tf 0.00 12.00 -12.00 0.00 12.96 196.19 Tm (Response) Tj
 ET
 Q q 59.04 73.44 342.72 299.52 re W n
@@ -1660,15 +1660,15 @@ S
 81.45 322.99 m 100.89 322.99 l S
 BT
 0.000 0.000 0.000 rg
-/F2 1 Tf 11.00 0.00 0.00 11.00 110.61 344.96 Tm (Fitted Line) Tj
-/F2 1 Tf 11.00 0.00 0.00 11.00 110.61 332.00 Tm (Confidence Bands) Tj
-/F2 1 Tf 11.00 0.00 0.00 11.00 110.61 319.04 Tm (Prediction Bands) Tj
+/F2 1 Tf 11.00 0.00 -0.00 11.00 110.61 344.96 Tm (Fitted Line) Tj
+/F2 1 Tf 11.00 0.00 -0.00 11.00 110.61 332.00 Tm (Confidence Bands) Tj
+/F2 1 Tf 11.00 0.00 -0.00 11.00 110.61 319.04 Tm (Prediction Bands) Tj
 ET
 Q
 endstream
 endobj
 8 0 obj
-27772
+27782
 endobj
 3 0 obj
 <<
@@ -1691,7 +1691,9 @@ endobj
 <<
 /Type /Encoding
 /BaseEncoding /WinAnsiEncoding
-/Differences [ 45/minus ]
+/Differences [ 45/minus 96/quoteleft
+144/dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent
+/dieresis /.notdef /ring /cedilla /.notdef /hungarumlaut /ogonek /caron /space]
 >>
 endobj
 10 0 obj <<
@@ -1706,14 +1708,14 @@ xref
 0000000000 65535 f 
 0000000021 00000 n 
 0000000163 00000 n 
-0000028221 00000 n 
-0000028304 00000 n 
+0000028231 00000 n 
+0000028314 00000 n 
 0000000212 00000 n 
 0000000295 00000 n 
 0000000375 00000 n 
-0000028200 00000 n 
-0000028397 00000 n 
-0000028491 00000 n 
+0000028210 00000 n 
+0000028407 00000 n 
+0000028664 00000 n 
 trailer
 <<
 /Size 11
@@ -1721,5 +1723,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-28588
+28761
 %%EOF

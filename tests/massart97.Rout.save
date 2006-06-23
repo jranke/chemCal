@@ -18,6 +18,48 @@ Type 'q()' to quit R.
 > require(chemCal)
 Loading required package: chemCal
 [1] TRUE
+> data(massart97ex1)
+> m <- lm(y ~ x, data = massart97ex1)
+> inverse.predict(m, 15)        #  6.1 +- 4.9
+$Prediction
+[1] 6.09381
+
+$`Standard Error`
+[1] 1.767278
+
+$Confidence
+[1] 4.906751
+
+$`Confidence Limits`
+[1]  1.187059 11.000561
+
+> inverse.predict(m, 90)        # 43.9 +- 4.9
+$Prediction
+[1] 43.93983
+
+$`Standard Error`
+[1] 1.767747
+
+$Confidence
+[1] 4.908053
+
+$`Confidence Limits`
+[1] 39.03178 48.84788
+
+> inverse.predict(m, rep(90,5)) # 43.9 +- 3.2
+$Prediction
+[1] 43.93983
+
+$`Standard Error`
+[1] 1.141204
+
+$Confidence
+[1] 3.168489
+
+$`Confidence Limits`
+[1] 40.77134 47.10832
+
+> 
 > data(massart97ex3)
 > attach(massart97ex3)
 > yx <- split(y, x)

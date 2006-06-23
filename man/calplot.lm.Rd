@@ -45,9 +45,9 @@
 \note{
   Prediction bands for models from weighted linear regression require weights
   for the data, for which responses should be predicted. Prediction intervals
-  for weighted models are not currently supported by the internally used
-  function \code{\link{predict.lm}}, therefore, \code{calplot} refuses to work
-  for such models.
+  using weights e.g. from a variance function are currently not supported by
+  the internally used function \code{\link{predict.lm}}, therefore,
+  \code{calplot} does not draw prediction bands for such models.
 }
 \examples{
 data(massart97ex3)

@@ -1,4 +1,10 @@
 require(chemCal)
+data(massart97ex1)
+m <- lm(y ~ x, data = massart97ex1)
+inverse.predict(m, 15)        #  6.1 +- 4.9
+inverse.predict(m, 90)        # 43.9 +- 4.9
+inverse.predict(m, rep(90,5)) # 43.9 +- 3.2
+
 data(massart97ex3)
 attach(massart97ex3)
 yx <- split(y, x)
