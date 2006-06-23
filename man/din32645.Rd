@@ -11,39 +11,44 @@
 }
 \examples{
 data(din32645)
-m <- lm(y ~ x, data=din32645)
+m <- lm(y ~ x, data = din32645)
 calplot(m)
-(prediction <- inverse.predict(m,3500,alpha=0.01))
-# This should give 0.07434 according to Dintest test data, as 
-# collected from Procontrol 3.1 (isomehr GmbH)
+
+## Prediction of x with confidence interval
+(prediction <- inverse.predict(m, 3500, alpha = 0.01))
+
+# This should give 0.07434 according to test data from Dintest, which 
+# was collected from Procontrol 3.1 (isomehr GmbH) in this case
 round(prediction$Confidence,5)
 
-# According to Dintest test data, we should get 0.0698 for the critical value
+## Critical value:
+(crit <- lod(m, alpha = 0.01, beta = 0.5))
+
+# According to DIN 32645, we should get 0.07 for the critical value
 # (decision limit, "Nachweisgrenze")
-(lod <- lod(m, alpha = 0.01, beta = 0.5))
-round(lod$x,4)
+round(crit$x, 2)
+# and according to Dintest test data, we should get 0.0698 from
+round(crit$x, 4)
 
+## Limit of detection (smallest detectable value given alpha and beta)
 # In German, the smallest detectable value is the "Erfassungsgrenze", and we
-# should get 0.140 according to Dintest test data, but with chemCal, we can't
-# reproduce this, 
-lod(m, alpha = 0.01, beta = 0.01) 
-# except by using an equivalent to the approximation
-# xD = 2 * Sc / A (Currie 1999, p. 118, or Orange Book, Chapter 18.4.3.7)
-lod.approx <- 2 * lod$x
-round(lod.approx, digits=3)
-# which seems to be the pragmatic definition in DIN 32645, as judging from
-# the Dintest test data. 
+# should get 0.14 according to DIN, which we achieve by using the method 
+# described in it:
+lod.din <- lod(m, alpha = 0.01, beta = 0.01, method = "din")
+round(lod.din$x, 2)
 
-# This accords to the test data from Dintest again, except for the last digit
-# of the value cited for Procontrol 3.1 (0.2121)
+## Limit of quantification
+# This accords to the test data coming with the test data from Dintest again, 
+# except for the last digits of the value cited for Procontrol 3.1 (0.2121)
 (loq <- loq(m, alpha = 0.01))
 round(loq$x,4)
+
 # A similar value is obtained using the approximation 
 # LQ = 3.04 * LC (Currie 1999, p. 120)
 3.04 * lod(m,alpha = 0.01, beta = 0.5)$x
 }
 \references{
-  DIN 32645 (equivalent to ISO 11843)
+  DIN 32645 (equivalent to ISO 11843), Beuth Verlag, Berlin, 1994
 
   Dintest. Plugin for MS Excel for evaluations of calibration data. Written
   by Georg Schmitt, University of Heidelberg. 

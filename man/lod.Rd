@@ -5,7 +5,7 @@
 \alias{lod.default}
 \title{Estimate a limit of detection (LOD)}
 \usage{
-  lod(object, \dots, alpha = 0.05, beta = 0.05)
+  lod(object, \dots, alpha = 0.05, beta = 0.05, method = "default")
 }
 \arguments{
   \item{object}{
@@ -24,10 +24,18 @@
   \item{beta}{
     The error tolerance beta for the detection limit.
   }
+  \item{method}{
+    The default method uses a prediction interval at the LOD
+    for the estimation of the LOD, which obviously requires
+    iteration. This is described for example in Massart, p. 432 ff.
+    The \dQuote{din} method uses the prediction interval at
+    x = 0 as an approximation.
+  }
 }
 \value{
   A list containig the corresponding x and y values of the estimated limit of
-  detection of a model used for calibration.  }
+  detection of a model used for calibration.  
+}
 \description{
   The decision limit (German: Nachweisgrenze) is defined as the signal or
   analyte concentration that is significantly different from the blank signal
@@ -39,7 +47,7 @@
   one-sided significance test).
 }
 \note{
-  - The default values for alpha and beta are recommended by IUPAC.
+  - The default values for alpha and beta are the ones recommended by IUPAC.
   - The estimation of the LOD in terms of the analyte amount/concentration
     xD from the LOD in the signal domain SD is done by simply inverting the
     calibration function (i.e. assuming a known calibration function).
@@ -68,8 +76,8 @@
   # The critical value (decision limit, German Nachweisgrenze) can be obtained
   # by using beta = 0.5:
   lod(m, alpha = 0.01, beta = 0.5)
-  # or approximated by 
-  2 * lod(m, alpha = 0.01, beta = 0.5)$x
-  # for the case of known, constant variance (homoscedastic data)
+}
+\seealso{
+  Examples for \code{\link{din32645}}  
 }
 \keyword{manip}

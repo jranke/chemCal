@@ -1,6 +1,6 @@
 # Makefile for Sweave documents containing both Latex and R code
 # Author:	Johannes Ranke <jranke@uni-bremen.de>
-# Last Change: 2006 Mai 24
+# Last Change: 2006 Jun 23
 # based on the Makefile of Nicholas Lewin-Koh
 # in turn based on work of Rouben Rostmaian
 # SVN: $Id: Makefile.rnoweb 62 2006-05-24 08:30:59Z ranke $

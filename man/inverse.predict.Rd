@@ -5,7 +5,7 @@
 \alias{inverse.predict.default}
 \title{Predict x from y for a linear calibration}
 \usage{inverse.predict(object, newdata, \dots,
-  ws, alpha=0.05, ss = "auto")
+  ws, alpha=0.05, var.s = "auto")
 }
 \arguments{
   \item{object}{
@@ -21,15 +21,17 @@
     future implementations.
   }
   \item{ws}{ 
-    The weight attributed to the sample. The default is to take the 
-    mean of the weights in the model, if there are any.
+    The weight attributed to the sample. This argument is obligatory
+    if \code{object} has weights.
   }
   \item{alpha}{
     The error tolerance level for the confidence interval to be reported.
   }
-  \item{ss}{
-    The estimated standard error of the sample measurements. The 
-    default is to take the residual standard error from the calibration.
+  \item{var.s}{
+    The estimated variance of the sample measurements. The default is to take
+    the residual standard error from the calibration and to adjust it
+    using \code{ws}, if applicable. This means that \code{var.s}
+    overrides \code{ws}.
   }
 }
 \value{
@@ -59,12 +61,13 @@
 \examples{
   data(massart97ex3)
   attach(massart97ex3)
-  yx <- split(y,factor(x))
-  s <- round(sapply(yx,sd),digits=2)
-  w <- round(1/(s^2),digits=3)
+  yx <- split(y, x)
+  ybar <- sapply(yx, mean)
+  s <- round(sapply(yx, sd), digits = 2)
+  w <- round(1 / (s^2), digits = 3)
   weights <- w[factor(x)]
-  m <- lm(y ~ x,w=weights)
+  m <- lm(y ~ x, w = weights)
 
-  inverse.predict(m,15,ws = 1.67)
+  inverse.predict(m, 15, ws = 1.67) # 5.9 +- 2.5
 }
 \keyword{manip}

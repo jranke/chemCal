@@ -1,14 +1,14 @@
-lod <- function(object, ..., alpha = 0.05, beta = 0.05)
+lod <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
 {
   UseMethod("lod")
 }
 
-lod.default <- function(object, ..., alpha = 0.05, beta = 0.05)
+lod.default <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
 {
   stop("lod is only implemented for univariate lm objects.")
 }
 
-lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05)
+lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
 {
   if (length(object$weights) > 0) {
     stop(paste(
@@ -24,23 +24,29 @@ lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05)
   yname <- names(object$model)[[1]]
   newdata <- data.frame(0)
   names(newdata) <- xname
-  y0 <- predict(object, newdata, interval="prediction", 
-      level = 1 - 2 * alpha )
+  y0 <- predict(object, newdata, interval = "prediction", 
+    level = 1 - 2 * alpha)
   yc <- y0[[1,"upr"]]
-  xc <- inverse.predict(object,yc)[["Prediction"]]
-  f <- function(x)
-  {
-    newdata <- data.frame(x)
-    names(newdata) <- xname
-    pi.y <- predict(object, newdata, interval = "prediction",
+  if (method == "din") {
+    y0.d <- predict(object, newdata, interval = "prediction",
       level = 1 - 2 * beta)
-    yd <- pi.y[[1,"lwr"]]
-    (yd - yc)^2
+    deltay <- y0.d[[1, "upr"]] - y0.d[[1, "fit"]]
+    lod.y <- yc + deltay 
+    lod.x <- inverse.predict(object, lod.y)$Prediction
+  } else {
+    f <- function(x) {
+      newdata <- data.frame(x)
+      names(newdata) <- xname
+      pi.y <- predict(object, newdata, interval = "prediction",
+        level = 1 - 2 * beta)
+      yd <- pi.y[[1,"lwr"]]
+      (yd - yc)^2
+    }
+    lod.x <- optimize(f,interval=c(0,max(object$model[[xname]])))$minimum
+    newdata <- data.frame(x = lod.x)
+    names(newdata) <- xname
+    lod.y <-  predict(object, newdata)
   }
-  lod.x <- optimize(f,interval=c(0,max(object$model[[xname]])))$minimum
-  newdata <- data.frame(x = lod.x)
-  names(newdata) <- xname
-  lod.y <-  predict(object, newdata)
   lod <- list(lod.x, lod.y)
   names(lod) <- c(xname, yname)
   return(lod)

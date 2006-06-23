@@ -1,6 +1,6 @@
 calplot <- function(object, 
-  xlim = c("auto","auto"), ylim = c("auto","auto"), 
-  xlab = "Concentration", ylab = "Response", alpha=0.05,
+  xlim = c("auto", "auto"), ylim = c("auto", "auto"), 
+  xlab = "Concentration", ylab = "Response", alpha = 0.05,
   varfunc = NULL)
 {
   UseMethod("calplot")
@@ -21,14 +21,6 @@ calplot.lm <- function(object,
 {
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")
-
-  if (length(object$weights) > 0) {
-    stop(paste(
-     "\nConfidence and prediction intervals for weighted linear models require",
-     "weights for the x values from which the predictions are to be generated.",
-     "This is not supported by the internally used predict.lm method.",
-        sep = "\n"))
-  }
 
   if (alpha <= 0 | alpha >= 1)
     stop("Alpha should be between 0 and 1 (exclusive)")
@@ -65,9 +57,17 @@ calplot.lm <- function(object,
   points(x,y, pch = 21, bg = "yellow")
   matlines(newdata[[1]], pred.lim, lty = c(1, 4, 4), 
     col = c("black", "red", "red"))
+  if (length(object$weights) > 0) {
+    legend(min(x), 
+      max(pred.lim, na.rm = TRUE), 
+      legend = c("Fitted Line", "Confidence Bands"),
+      lty = c(1, 3), 
+      lwd = 2, 
+      col = c("black", "green4"), 
+      horiz = FALSE, cex = 0.9, bg = "gray95")
+  } else {
   matlines(newdata[[1]], conf.lim, lty = c(1, 3, 3), 
     col = c("black", "green4", "green4"))
-
   legend(min(x), 
     max(pred.lim, na.rm = TRUE), 
     legend = c("Fitted Line", "Confidence Bands", 
@@ -76,4 +76,5 @@ calplot.lm <- function(object,
     lwd = 2, 
     col = c("black", "green4", "red"), 
     horiz = FALSE, cex = 0.9, bg = "gray95")
+  }
 }

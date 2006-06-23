@@ -5,12 +5,11 @@
 \title{Plot calibration graphs from univariate linear models}
 \description{
 	Produce graphics of calibration data, the fitted model as well
-  as prediction and confidence bands. 
+  as confidence, and, for unweighted regression, prediction bands. 
 }
 \usage{
-  calplot(object, xlim = c("auto","auto"), ylim = c("auto","auto"),
-  xlab = "Concentration", ylab = "Response", alpha=0.05, 
-  varfunc = NULL)
+  calplot(object, xlim = c("auto", "auto"), ylim = c("auto", "auto"),
+    xlab = "Concentration", ylab = "Response", alpha=0.05, varfunc = NULL)
 }
 \arguments{
   \item{object}{
@@ -40,7 +39,8 @@
 }
 \value{
   A plot of the calibration data, of your fitted model as well as lines showing
-  the confidence limits as well as the prediction limits.
+  the confidence limits. Prediction limits are only shown for models from
+  unweighted regression.
 } 
 \note{
   Prediction bands for models from weighted linear regression require weights
@@ -51,7 +51,7 @@
 }
 \examples{
 data(massart97ex3)
-m <- lm(y ~ x, data=massart97ex3)
+m <- lm(y ~ x, data = massart97ex3)
 calplot(m)
 }
 \author{
