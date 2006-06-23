@@ -69,13 +69,13 @@
   Analytica Chimica Acta 391, 105 - 126.
 }
 \examples{
-  data(din32645)
-  m <- lm(y ~ x, data = din32645)
-  lod(m) 
+data(din32645)
+m <- lm(y ~ x, data = din32645)
+lod(m) 
 
-  # The critical value (decision limit, German Nachweisgrenze) can be obtained
-  # by using beta = 0.5:
-  lod(m, alpha = 0.01, beta = 0.5)
+# The critical value (decision limit, German Nachweisgrenze) can be obtained
+# by using beta = 0.5:
+lod(m, alpha = 0.01, beta = 0.5)
 }
 \seealso{
   Examples for \code{\link{din32645}}  

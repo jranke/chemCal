@@ -59,15 +59,15 @@
   p. 200
 }
 \examples{
-  data(massart97ex3)
-  attach(massart97ex3)
-  yx <- split(y, x)
-  ybar <- sapply(yx, mean)
-  s <- round(sapply(yx, sd), digits = 2)
-  w <- round(1 / (s^2), digits = 3)
-  weights <- w[factor(x)]
-  m <- lm(y ~ x, w = weights)
+data(massart97ex3)
+attach(massart97ex3)
+yx <- split(y, x)
+ybar <- sapply(yx, mean)
+s <- round(sapply(yx, sd), digits = 2)
+w <- round(1 / (s^2), digits = 3)
+weights <- w[factor(x)]
+m <- lm(y ~ x, w = weights)
 
-  inverse.predict(m, 15, ws = 1.67) # 5.9 +- 2.5
+inverse.predict(m, 15, ws = 1.67) # 5.9 +- 2.5
 }
 \keyword{manip}

@@ -63,13 +63,13 @@
     and therefore not tested. Feedback is welcome.
 }
 \examples{
-  data(massart97ex3)
-  attach(massart97ex3)
-  m <- lm(y ~ x)
-  loq(m)
+data(massart97ex3)
+attach(massart97ex3)
+m <- lm(y ~ x)
+loq(m)
 
-  # We can get better by using replicate measurements
-  loq(m, n = 3)
+# We can get better by using replicate measurements
+loq(m, n = 3)
 }
 \seealso{
   Examples for \code{\link{din32645}}  
