@@ -5,7 +5,7 @@
   Inverse of the arithmetic power function \code{\link{powfunc}} used for
   modelling univariate nonlinear calibration data. }
 \usage{
-  powfunc(x,a,b)
+  ipowfunc(x,a,b)
 }
 \arguments{
   \item{x}{
