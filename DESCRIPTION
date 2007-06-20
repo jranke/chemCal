@@ -15,5 +15,5 @@ Description: chemCal provides simple functions for plotting linear
 	regression (lm) or robust linear regression (rlm from the MASS package).
 License: GPL version 2 or newer
 URL: http://www.r-project.org, 
-	http://www.uft.uni-bremen.de/chemie/ranke,
+	http://www.uft.uni-bremen.de/chemie/ranke/?page=chemCal,
 	http://kriemhild.uft.uni-bremen.de/viewcvs/?root=chemCal
