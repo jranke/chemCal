@@ -1,0 +1,45 @@
+
+R : Copyright 2006, The R Foundation for Statistical Computing
+Version 2.3.1 (2006-06-01)
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> require(chemCal)
+Loading required package: chemCal
+[1] TRUE
+> data(din32645)
+> m <- lm(y ~ x, data = din32645)
+> inverse.predict(m, 3500, alpha = 0.01)
+$Prediction
+[1] 0.1054792
+
+$`Standard Error`
+[1] 0.02215619
+
+$Confidence
+[1] 0.07434261
+
+$`Confidence Limits`
+[1] 0.03113656 0.17982178
+
+> lod <- lod(m, alpha = 0.01, beta = 0.5)
+> lod(m, alpha = 0.01, beta = 0.01) 
+$x
+[1] 0.132904
+
+$y
+[1] 3764.977
+
+> loq <- loq(m, alpha = 0.01)
+> 

@@ -1,0 +1,123 @@
+
+R : Copyright 2006, The R Foundation for Statistical Computing
+Version 2.3.1 (2006-06-01)
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> require(chemCal)
+Loading required package: chemCal
+[1] TRUE
+> data(massart97ex1)
+> m <- lm(y ~ x, data = massart97ex1)
+> inverse.predict(m, 15)        #  6.1 +- 4.9
+$Prediction
+[1] 6.09381
+
+$`Standard Error`
+[1] 1.767278
+
+$Confidence
+[1] 4.906751
+
+$`Confidence Limits`
+[1]  1.187059 11.000561
+
+> inverse.predict(m, 90)        # 43.9 +- 4.9
+$Prediction
+[1] 43.93983
+
+$`Standard Error`
+[1] 1.767747
+
+$Confidence
+[1] 4.908053
+
+$`Confidence Limits`
+[1] 39.03178 48.84788
+
+> inverse.predict(m, rep(90,5)) # 43.9 +- 3.2
+$Prediction
+[1] 43.93983
+
+$`Standard Error`
+[1] 1.141204
+
+$Confidence
+[1] 3.168489
+
+$`Confidence Limits`
+[1] 40.77134 47.10832
+
+> 
+> data(massart97ex3)
+> attach(massart97ex3)
+> yx <- split(y, x)
+> ybar <- sapply(yx, mean)
+> s <- round(sapply(yx, sd), digits = 2)
+> w <- round(1 / (s^2), digits = 3)
+> weights <- w[factor(x)]
+> m <- lm(y ~ x, w = weights)
+> #calplot(m)
+> 
+> inverse.predict(m, 15, ws = 1.67)  # 5.9 +- 2.5
+$Prediction
+[1] 5.865367
+
+$`Standard Error`
+[1] 0.892611
+
+$Confidence
+[1] 2.478285
+
+$`Confidence Limits`
+[1] 3.387082 8.343652
+
+> inverse.predict(m, 90, ws = 0.145) # 44.1 +- 7.9
+$Prediction
+[1] 44.06025
+
+$`Standard Error`
+[1] 2.829162
+
+$Confidence
+[1] 7.855012
+
+$`Confidence Limits`
+[1] 36.20523 51.91526
+
+> 
+> m0 <- lm(y ~ x) 
+> lod(m0)
+$x
+[1] 5.406637
+
+$y
+[1] 13.63822
+
+> 
+> loq(m0)
+$x
+[1] 13.97767
+
+$y
+[1] 30.62355
+
+> loq(m, w.loq = 1.67)
+$x
+[1] 7.346231
+
+$y
+[1] 17.90784
+
+> 
