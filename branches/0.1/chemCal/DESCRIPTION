@@ -1,10 +1,9 @@
 Package: chemCal
-Version: 0.1-19
+Version: 0.1-26
 Date: 2007-10-01
 Title: Calibration functions for analytical chemistry
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Maintainer: Johannes Ranke <jranke@uni-bremen.de>
-Depends: R
 Suggests: MASS
 Description: chemCal provides simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements

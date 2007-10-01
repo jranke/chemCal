@@ -14,4 +14,3 @@
   Author and Maintainer: Johannes Ranke <jranke@uni-bremen.de>
 }
 \keyword{manip}
-}

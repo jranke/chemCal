@@ -25,8 +25,8 @@
 /c   { newpath 0 360 arc } def
 /r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
 /p1  { stroke } def
-/p2  { gsave bg setrgbcolor fill grestore newpath } def
-/p3  { gsave bg setrgbcolor fill grestore stroke } def
+/p2  { gsave bg fill grestore newpath } def
+/p3  { gsave bg fill grestore stroke } def
 /t   { 6 -2 roll moveto gsave rotate
        ps mul neg 0 2 1 roll rmoveto
        1 index stringwidth pop
@@ -80,7 +80,7 @@ dup length dict begin
 %%Page: 1 1
 bp
 0.00 0.00 432.00 432.00 cl
-0 0 0 rgb
+0 setgray
 0.75 setlinewidth
 [] 0 setdash
 1 setlinecap
@@ -164,12 +164,12 @@ np
 o
 0.00 0.00 432.00 432.00 cl
 /ps 12 def /Font1 findfont 12 s
-0 0 0 rgb
+0 setgray
 230.40 18.72 (Concentration) .5 0 0 t
 12.96 223.20 (Response) .5 0 90 t
 59.04 73.44 401.76 372.96 cl
-/bg { 1 1 0 } def
-0 0 0 rgb
+/bg { 1 1 0 rgb } def
+0 setgray
 0.75 setlinewidth
 [] 0 setdash
 1 setlinecap
@@ -964,7 +964,7 @@ np
 1.27 0.99 l
 1.28 1.00 l
 o
-0 0 0 rgb
+0 setgray
 0.75 setlinewidth
 [] 0 setdash
 np
@@ -1726,8 +1726,8 @@ np
 1.27 1.01 l
 1.28 1.01 l
 o
-/bg { 0.9490 0.9490 0.9490 } def
-0 0 0 rgb
+/bg { 0.9490 setgray } def
+0 setgray
 0.75 setlinewidth
 [] 0 setdash
 71.73 361.87 133.62 -51.84 r p3
@@ -1752,7 +1752,7 @@ np
 19.44 0 l
 o
 /ps 11 def /Font1 findfont 11 s
-0 0 0 rgb
+0 setgray
 110.61 344.96 (Fitted Line) 0 0 0 t
 110.61 332.00 (Confidence Bands) 0 0 0 t
 110.61 319.04 (Prediction Bands) 0 0 0 t
