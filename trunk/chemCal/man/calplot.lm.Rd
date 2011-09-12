@@ -30,7 +30,9 @@
     The label of the y axis.
   }
   \item{alpha}{
-    The error tolerance level for the confidence and prediction bands.
+    The error tolerance level for the confidence and prediction bands. Note that this 
+    includes both tails of the Gaussian distribution, unlike the alpha and beta parameters
+    used in \code{\link{lod}} (see note below).
   }
   \item{varfunc}{
     The variance function for generating the weights in the model.
@@ -48,6 +50,11 @@
   using weights e.g. from a variance function are currently not supported by
   the internally used function \code{\link{predict.lm}}, therefore,
   \code{calplot} does not draw prediction bands for such models.
+  
+  It is possible to compare the \code{\link{calplot}} prediction bands with the
+  \code{\link{lod}} values if the \code{lod()} alpha and beta parameters are
+  half the value of the \code{calplot()} alpha parameter.
+  
 }
 \examples{
 data(massart97ex3)
