@@ -22,7 +22,7 @@ At the moment, the package consists of four functions, working on univariate
 linear models of class \texttt{lm} or \texttt{rlm}, plus to datasets for
 validation.
 
-A \href{http://bugs.r-project.org/cgi-bin/R/wishlst-fulfilled?id=8877;user=guest}{bug
+A \href{http://bugs.r-project.org/bugzilla3/show_bug.cgi?id=8877}{bug
 report (PR\#8877)} and the following e-mail exchange on the r-devel mailing list about
 prediction intervals from weighted regression entailed some further studies
 on this subject. However, I did not encounter any proof or explanation of the
@@ -136,6 +136,7 @@ case.
 Let's take the above example and estimate a variance function
 
 <<>>=
+library(doBy)
 massart97ex3
 massart97ex3$x <- factor(massart97ex3$x)
 summary <- summaryBy(y~x, data = massart97ex3,FUN=c(mean,sd,var))
@@ -146,9 +147,7 @@ plot(summary$x, summary$y.var,
 varModel <- lm(y.var ~ I(x^2) + x, data=summary)
 varCurve <- predict(varModel, newdata=data.frame(x=0:5000/100))
 lines(0:5000/100,varCurve)
-
-
-
+@
 
 
 \begin{thebibliography}{1}

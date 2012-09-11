@@ -5,7 +5,7 @@
 \title{Basic calibration functions for analytical chemistry}
 \author{Johannes Ranke}
 
-\usepackage{/usr/share/R/share/texmf/Sweave}
+\usepackage{Sweave}
 \begin{document}
 \maketitle
 
@@ -23,7 +23,7 @@ At the moment, the package consists of four functions, working on univariate
 linear models of class \texttt{lm} or \texttt{rlm}, plus to datasets for
 validation.
 
-A \href{http://bugs.r-project.org/cgi-bin/R/wishlst-fulfilled?id=8877;user=guest}{bug
+A \href{http://bugs.r-project.org/bugzilla3/show_bug.cgi?id=8877}{bug
 report (PR\#8877)} and the following e-mail exchange on the r-devel mailing list about
 prediction intervals from weighted regression entailed some further studies
 on this subject. However, I did not encounter any proof or explanation of the
@@ -52,7 +52,7 @@ provided by R:
 
 \begin{Schunk}
 \begin{Sinput}
-> plot(m0, which = 3)
+> plot(m0,which=3)
 \end{Sinput}
 \end{Schunk}
 \includegraphics{chemCal-002}
@@ -66,7 +66,7 @@ is proposed which can be reproduced by
 > yx <- split(y, x)
 > ybar <- sapply(yx, mean)
 > s <- round(sapply(yx, sd), digits = 2)
-> w <- round(1/(s^2), digits = 3)
+> w <- round(1 / (s^2), digits = 3)
 > weights <- w[factor(x)]
 > m <- lm(y ~ x, w = weights)
 \end{Sinput}
@@ -77,14 +77,14 @@ we use the \texttt{inverse.predict} function:
 
 \begin{Schunk}
 \begin{Sinput}
-> inverse.predict(m, 15, ws = 1.67)
+> inverse.predict(m, 15, ws=1.67)
 \end{Sinput}
 \begin{Soutput}
 $Prediction
 [1] 5.865367
 
 $`Standard Error`
-[1] 0.892611
+[1] 0.8926109
 
 $Confidence
 [1] 2.478285

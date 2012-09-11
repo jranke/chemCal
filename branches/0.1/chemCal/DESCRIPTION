@@ -1,6 +1,6 @@
 Package: chemCal
-Version: 0.1-27
-Date: 2010-09-12
+Version: 0.1-28
+Date: 2012-09-11
 Title: Calibration functions for analytical chemistry
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Maintainer: Johannes Ranke <jranke@uni-bremen.de>
@@ -12,7 +12,7 @@ Description: chemCal provides simple functions for plotting linear
 	of detection (LOQ) and limit of quantification (LOD).
 	The functions work on model objects from - optionally weighted - linear
 	regression (lm) or robust linear regression (rlm from the MASS package).
-License: GPL version 2 or newer
+License: GPL (>= 2)
 URL: http://www.r-project.org, 
 	http://www.uft.uni-bremen.de/chemie/ranke,
 	http://kriemhild.uft.uni-bremen.de/viewcvs/?root=chemCal
