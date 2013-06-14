@@ -10,7 +10,7 @@ Description: chemCal provides simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A
 	by Massart et al. There are also functions estimating the limit
-	of detection (LOQ) and limit of quantification (LOD).
+	of detection (LOD) and limit of quantification (LOQ).
 	The functions work on model objects from - optionally weighted - linear
 	regression (lm) or robust linear regression (rlm from the MASS package).
 License: GPL version 2 or newer
