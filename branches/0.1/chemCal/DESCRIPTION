@@ -1,6 +1,6 @@
 Package: chemCal
-Version: 0.1-29
-Date: 2013-05-31
+Version: 0.1-32
+Date: 2014-04-24
 Title: Calibration functions for analytical chemistry
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Maintainer: Johannes Ranke <jranke@uni-bremen.de>

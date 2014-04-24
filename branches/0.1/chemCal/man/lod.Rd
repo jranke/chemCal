@@ -5,7 +5,7 @@
 \alias{lod.default}
 \title{Estimate a limit of detection (LOD)}
 \usage{
-  lod(object, \dots, alpha = 0.05, beta = 0.05, method = "default")
+  lod(object, \dots, alpha = 0.05, beta = 0.05, method = "default", tol = "default")
 }
 \arguments{
   \item{object}{
@@ -25,11 +25,16 @@
     The error tolerance beta for the detection limit.
   }
   \item{method}{
-    The default method uses a prediction interval at the LOD
+    The \dQuote{default} method uses a prediction interval at the LOD
     for the estimation of the LOD, which obviously requires
     iteration. This is described for example in Massart, p. 432 ff.
     The \dQuote{din} method uses the prediction interval at
     x = 0 as an approximation.
+  }
+  \item{tol}{
+    When the \dQuote{default} method is used, the default tolerance
+    for the lod on the x scale is the value of the smallest non-zero standard
+    divided by 1000.
   }
 }
 \value{

@@ -1,0 +1,11 @@
+2014-04-24  Johannes Ranke <jranke@uni-bremen.de> for chemCal (0.1-32)
+
+	* Bugfix in lod(): In the case of small absolute x values (e.g. on the order
+	of 1e-4 and smaller), the lod calculated using the default method could
+	produce inaccurate results as the default tolerance that was used in the
+	internal call to optimize is inappropriate in such cases. Now a reasonable
+	default is used which can be overriden by the user. Thanks to Jérôme
+	Ambroise for reporting the bug.
+
+Changes performed in earlier versions are documented in the subversion log
+files found at http://kriemhild.uft.uni-bremen.de/viewcvs/?root=chemCal

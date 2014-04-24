@@ -1,9 +1,0 @@
-calplot                 Plot calibration graphs from univariate linear
-                        models
-chemCal-package         Calibration functions for analytical chemistry
-din32645                Calibration data from DIN 32645
-inverse.predict         Predict x from y for a linear calibration
-lod                     Estimate a limit of detection (LOD)
-loq                     Estimate a limit of quantification (LOQ)
-massart97ex3            Calibration data from Massart et al. (1997),
-                        example 3

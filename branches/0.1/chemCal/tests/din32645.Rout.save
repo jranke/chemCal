@@ -1,7 +1,6 @@
 
-R version 2.13.1 (2011-07-08)
-Copyright (C) 2011 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -36,11 +35,14 @@ $`Confidence Limits`
 > lod <- lod(m, alpha = 0.01, beta = 0.5)
 > lod(m, alpha = 0.01, beta = 0.01) 
 $x
-[1] 0.132904
+[1] 0.132909
 
 $y
        1 
-3764.977 
+3765.025 
 
 > loq <- loq(m, alpha = 0.01)
 > 
+> proc.time()
+   user  system elapsed 
+  0.454   0.286   0.341 

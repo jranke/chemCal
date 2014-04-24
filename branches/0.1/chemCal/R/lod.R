@@ -1,14 +1,14 @@
-lod <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
+lod <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default", tol = "default")
 {
   UseMethod("lod")
 }
 
-lod.default <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
+lod.default <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default", tol = "default")
 {
   stop("lod is only implemented for univariate lm objects.")
 }
 
-lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
+lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default", tol = "default")
 {
   if (length(object$weights) > 0) {
     stop(paste(
@@ -21,6 +21,7 @@ lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
     ))
   }
   xname <- names(object$model)[[2]]
+  xvalues <- object$model[[2]]
   yname <- names(object$model)[[1]]
   newdata <- data.frame(0)
   names(newdata) <- xname
@@ -42,7 +43,8 @@ lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default")
       yd <- pi.y[[1,"lwr"]]
       (yd - yc)^2
     }
-    lod.x <- optimize(f,interval=c(0,max(object$model[[xname]])))$minimum
+    if (tol == "default") tol = min(xvalues[xvalues !=0]) / 1000
+    lod.x <- optimize(f, interval = c(0, max(xvalues) * 10), tol = tol)$minimum
     newdata <- data.frame(x = lod.x)
     names(newdata) <- xname
     lod.y <-  predict(object, newdata)
