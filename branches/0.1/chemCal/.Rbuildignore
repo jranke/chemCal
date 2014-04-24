@@ -1,0 +1,9 @@
+GNUmakefile
+out$
+toc$
+bbl$
+blg$
+aux$
+log$
+vignettes/chemCal.tex
+vignettes/chemCal.pdf
