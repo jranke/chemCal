@@ -1,17 +1,17 @@
 loq <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto", 
-  var.loq = "auto")
+  var.loq = "auto", tol = "default")
 {
   UseMethod("loq")
 }
 
 loq.default <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto",
-  var.loq = "auto")
+  var.loq = "auto", tol = "default")
 {
   stop("loq is only implemented for univariate lm objects.")
 }
 
 loq.lm <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto",
-  var.loq = "auto")
+  var.loq = "auto", tol = "default")
 {
   if (length(object$weights) > 0 && var.loq == "auto" && w.loq == "auto") {
     stop(paste("If you are using a model from weighted regression,",
@@ -20,6 +20,7 @@ loq.lm <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto",
       "limit of quantification"))
   }
   xname <- names(object$model)[[2]]
+  xvalues <- object$model[[2]]
   yname <- names(object$model)[[1]]
   f <- function(x) {
     newdata <- data.frame(x = x)
@@ -29,8 +30,8 @@ loq.lm <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto",
         var.s = var.loq, alpha = alpha)
     (p[["Prediction"]] - k * p[["Confidence"]])^2
   }
-  tmp <- optimize(f,interval=c(0,max(object$model[[2]])))
-  loq.x <- tmp$minimum
+  if (tol == "default") tol = min(xvalues[xvalues !=0]) / 1000
+  loq.x <- optimize(f, interval = c(0, max(xvalues) * 10), tol = tol)$minimum
   newdata <- data.frame(x = loq.x)
   names(newdata) <- xname
   loq.y <- predict(object, newdata)

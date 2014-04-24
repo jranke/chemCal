@@ -6,7 +6,7 @@
 \title{Estimate a limit of quantification (LOQ)}
 \usage{
   loq(object, \dots, alpha = 0.05, k = 3, n = 1, w.loq = "auto",
-    var.loq = "auto")
+    var.loq = "auto", tol = "default")
 }
 \arguments{
   \item{object}{
@@ -42,6 +42,11 @@
   \item{var.loq}{
     The approximate variance at the LOQ. The default value is 
     calculated from the model.
+  }
+  \item{tol}{
+    The default tolerance for the LOQ on the x scale is the value of the
+    smallest non-zero standard divided by 1000. Can be set to a 
+    numeric value to override this.
   }
 }
 \value{

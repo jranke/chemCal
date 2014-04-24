@@ -33,8 +33,8 @@
   }
   \item{tol}{
     When the \dQuote{default} method is used, the default tolerance
-    for the lod on the x scale is the value of the smallest non-zero standard
-    divided by 1000.
+    for the LOD on the x scale is the value of the smallest non-zero standard
+    divided by 1000. Can be set to a numeric value to override this.
   }
 }
 \value{

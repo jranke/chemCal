@@ -45,4 +45,4 @@ $y
 > 
 > proc.time()
    user  system elapsed 
-  0.454   0.286   0.341 
+  0.472   0.302   0.354 
