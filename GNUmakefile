@@ -55,3 +55,8 @@ check: build
 check-no-vignettes: build-no-vignettes
 	cd ..;\
 		"$(RBIN)/R" CMD check --as-cran $(PKGNAME)_$(PKGVERS).tar.gz
+
+sd:
+	@echo Now execute
+	@echo "\n  staticdocs::build_site()\n"
+	$(RBIN)/R
