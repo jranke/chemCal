@@ -51,8 +51,8 @@ round(loq$x,4)
   DIN 32645 (equivalent to ISO 11843), Beuth Verlag, Berlin, 1994
 
   Dintest. Plugin for MS Excel for evaluations of calibration data. Written
-  by Georg Schmitt, University of Heidelberg. 
-  \url{http://www.rzuser.uni-heidelberg.de/~df6/download/dintest.htm}
+  by Georg Schmitt, University of Heidelberg. Formerly available from
+  the Website of the University of Heidelberg.
 
   Currie, L. A. (1997) Nomenclature in evaluation of analytical methods including
   detection and quantification capabilities (IUPAC Recommendations 1995). 

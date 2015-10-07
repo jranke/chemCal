@@ -1,6 +1,11 @@
 # Export all names
 exportPattern(".")
+S3method(calplot, default)
+S3method(calplot, lm)
+S3method(lod, default)
 S3method(lod, lm)
+S3method(loq, default)
 S3method(loq, lm)
+S3method(inverse.predict, default)
 S3method(inverse.predict, lm)
 S3method(inverse.predict, rlm)

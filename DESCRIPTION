@@ -1,17 +1,17 @@
 Package: chemCal
-Version: 0.1-35.900
-Date: 2015-08-22
-Title: Calibration functions for analytical chemistry
+Version: 0.1-36
+Date: 2015-10-07
+Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de"))
 Suggests: MASS
-Description: chemCal provides simple functions for plotting linear
+Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A
 	by Massart et al. There are also functions estimating the limit
 	of detection (LOD) and limit of quantification (LOQ).
 	The functions work on model objects from - optionally weighted - linear
-	regression (lm) or robust linear regression (rlm from the MASS package).
+	regression (lm) or robust linear regression ('rlm' from the 'MASS' package).
 License: GPL (>= 2)
 URL: http://www.r-project.org, 
 	http://www.uft.uni-bremen.de/chemie/ranke,
