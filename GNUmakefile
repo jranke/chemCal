@@ -1,7 +1,7 @@
 PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGSRC  := $(shell basename $(PWD))
-TGZ     := ../$(PKGNAME)_$(PKGVERS).tar.gz
+TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
 
 # Specify the directory holding R binaries. To use an alternate R build (say a
 # pre-prelease version) use `make RBIN=/path/to/other/R/` or `export RBIN=...`
@@ -19,10 +19,11 @@ help:
 	@echo "-----------------"
 	@echo "  build                   Create the package"
 	@echo "  build-no-vignettes      Create the package without rebuilding vignettes"
-	@echo "  check                   Invoke build and then check the package"
-	@echo "  check-no-vignettes      Invoke build without rebuilding vignettes, and then check"
 	@echo "  install                 Invoke build and then install the result"
 	@echo "  install-no-vignettes    Invoke build without rebuilding vignettes and then install the result"
+	@echo "  check                   Invoke build and then check the package"
+	@echo "  check-no-vignettes      Invoke build without rebuilding vignettes, and then check"
+	@echo "  sd                      Build static documentation"
 	@echo "  winbuilder              Upload the build to winbuilder"
 	@echo ""
 	@echo "Using R in: $(RBIN)"
@@ -35,28 +36,22 @@ help:
 #------------------------------------------------------------------------------
 
 build:
-	cd ..;\
-		"$(RBIN)/R" CMD build $(PKGSRC)
+	"$(RBIN)/R" CMD build .
 
 build-no-vignettes:
-	cd ..;\
-		"$(RBIN)/R" CMD build $(PKGSRC) --no-build-vignettes
+	"$(RBIN)/R" CMD build --no-build-vignettes .
 
 install: build
-	cd ..;\
-		"$(RBIN)/R" CMD INSTALL $(TGZ)
+	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
 install-no-vignettes: build-no-vignettes
-	cd ..;\
-		"$(RBIN)/R" CMD INSTALL $(TGZ)
+	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
 check: build
-	cd ..;\
-		"$(RBIN)/R" CMD check --as-cran $(TGZ)
+	"$(RBIN)/R" CMD check --as-cran $(TGZ)
 
 check-no-vignettes: build-no-vignettes
-	cd ..;\
-		"$(RBIN)/R" CMD check --as-cran $(TGZ)
+	"$(RBIN)/R" CMD check --as-cran $(TGZ)
 
 sd:
 	@echo Now execute

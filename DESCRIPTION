@@ -1,6 +1,6 @@
 Package: chemCal
-Version: 0.1-36
-Date: 2015-10-07
+Version: 0.1-37
+Date: 2015-10-08
 Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de"))
@@ -13,6 +13,5 @@ Description: Simple functions for plotting linear
 	The functions work on model objects from - optionally weighted - linear
 	regression (lm) or robust linear regression ('rlm' from the 'MASS' package).
 License: GPL (>= 2)
-URL: http://www.r-project.org, 
-	http://www.uft.uni-bremen.de/chemie/ranke,
-	http://kriemhild.uft.uni-bremen.de/viewcvs/?root=chemCal
+URL: http://www.r-project.org,
+  http://chem.uft.uni-bremen.de/ranke/?page=chemCal, http://cgit.jrwb.de/chemCal

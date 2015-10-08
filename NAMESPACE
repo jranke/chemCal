@@ -9,3 +9,6 @@ S3method(loq, lm)
 S3method(inverse.predict, default)
 S3method(inverse.predict, lm)
 S3method(inverse.predict, rlm)
+
+importFrom("graphics", "legend", "matlines", "plot", "points")
+importFrom("stats", "optimize", "predict", "qt")
