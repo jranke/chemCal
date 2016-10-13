@@ -9,32 +9,6 @@ TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
 # containing the first instance of R on the PATH.
 RBIN ?= $(shell dirname "`which R`")
 
-.PHONY: help
-
-help:
-	@echo "\nExecute development tasks for $(PKGNAME)\n"
-	@echo "Usage: \`make <task>\` where <task> is one of:"
-	@echo ""
-	@echo "Development Tasks"
-	@echo "-----------------"
-	@echo "  build                   Create the package"
-	@echo "  build-no-vignettes      Create the package without rebuilding vignettes"
-	@echo "  install                 Invoke build and then install the result"
-	@echo "  install-no-vignettes    Invoke build without rebuilding vignettes and then install the result"
-	@echo "  check                   Invoke build and then check the package"
-	@echo "  check-no-vignettes      Invoke build without rebuilding vignettes, and then check"
-	@echo "  sd                      Build static documentation"
-	@echo "  winbuilder              Upload the build to winbuilder"
-	@echo ""
-	@echo "Using R in: $(RBIN)"
-	@echo "Set the RBIN environment variable to change this."
-	@echo ""
-
-
-#------------------------------------------------------------------------------
-# Development Tasks
-#------------------------------------------------------------------------------
-
 build:
 	"$(RBIN)/R" CMD build .
 
