@@ -9,6 +9,9 @@ TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
 # containing the first instance of R on the PATH.
 RBIN ?= $(shell dirname "`which R`")
 
+README.html: README.md
+	"$(RBIN)/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document')"
+
 build:
 	"$(RBIN)/R" CMD build .
 
