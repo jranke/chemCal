@@ -27,10 +27,10 @@ check: build
 check-no-vignettes: build-no-vignettes
 	"$(RBIN)/R" CMD check --as-cran $(TGZ)
 
-sd:
-	"$(RBIN)/Rscript" -e "staticdocs::build_site()"
+pd:
+	"$(RBIN)/Rscript" -e "pkgdown::build_site()"
 	git add -A
-	git commit -m 'Static documentation rebuilt by staticdocs::build_site()' -e
+	git commit -m 'Static documentation rebuilt by pkgdown::build_site()' -e
 
 winbuilder: build
 	@echo "Uploading to R-release on win-builder"
