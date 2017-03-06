@@ -7,4 +7,5 @@ aux$
 log$
 vignettes/chemCal.tex
 vignettes/chemCal.pdf
+vignettes/chemCal.R
 chemCal_.*.tar.gz

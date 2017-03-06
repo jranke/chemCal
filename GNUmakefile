@@ -30,8 +30,14 @@ check: build
 check-no-vignettes: build-no-vignettes
 	"$(RBIN)/R" CMD check --as-cran $(TGZ)
 
+vignettes/%.pdf: vignettes/%.Rnw
+	"$(RBIN)/Rscript" -e "tools::buildVignette(file = 'vignettes/$*.Rnw', dir = 'vignettes')"
+
+vignettes: vignettes/chemCal.pdf
+
 pd:
 	"$(RBIN)/Rscript" -e "pkgdown::build_site()"
+	cp vignettes/chemCal.pdf docs/articles
 	git add -A
 	git commit -m 'Static documentation rebuilt by pkgdown::build_site()' -e
 

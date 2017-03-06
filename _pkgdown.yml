@@ -2,3 +2,12 @@ title: chemCal
 
 template:
   bootswatch: spacelab
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: Functions and data
+      href: reference/index.html
+    - text: Short manual (pdf)
+      href: articles/chemCal.pdf
