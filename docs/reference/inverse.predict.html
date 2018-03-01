@@ -18,19 +18,37 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  
+  
+<meta property="og:title" content="Predict x from y for a linear calibration — inverse.predict" />
 
+<meta property="og:description" content="This function predicts x values using a univariate linear model that has been
+  generated for the purpose of calibrating a measurement method. Prediction
+  intervals are given at the specified confidence level.
+  The calculation method was taken from Massart et al. (1997). In particular,
+  Equations 8.26 and 8.28 were combined in order to yield a general treatment
+  of inverse prediction for univariate linear models, taking into account 
+  weights that have been used to create the linear model, and at the same
+  time providing the possibility to specify a precision in sample measurements
+  differing from the precision in standard samples used for the calibration.
+  This is elaborated in the package vignette." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -85,43 +103,44 @@
   This is elaborated in the package vignette.</p>
     
 
-    <pre>inverse.predict(object, newdata, &#8230;,
+    <pre class="usage">inverse.predict(object, newdata, &#8230;,
   ws, alpha=0.05, var.s = "auto")</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>object</dt>
-      <dd>
-    A univariate model object of class <code>lm</code> or 
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>A univariate model object of class <code>lm</code> or 
     <code><a href='http://www.rdocumentation.org/packages/MASS/topics/rlm'>rlm</a></code> 
-    with model formula <code>y ~ x</code> or <code>y ~ x - 1</code>.
-  </dd>
-      <dt>newdata</dt>
-      <dd> 
-    A vector of observed y values for one sample.
-  </dd>
-      <dt>&#8230;</dt>
-      <dd>
-    Placeholder for further arguments that might be needed by 
-    future implementations.
-  </dd>
-      <dt>ws</dt>
-      <dd> 
-    The weight attributed to the sample. This argument is obligatory
-    if <code>object</code> has weights.
-  </dd>
-      <dt>alpha</dt>
-      <dd>
-    The error tolerance level for the confidence interval to be reported.
-  </dd>
-      <dt>var.s</dt>
-      <dd>
-    The estimated variance of the sample measurements. The default is to take
+    with model formula <code>y ~ x</code> or <code>y ~ x - 1</code>.</p></td>
+    </tr>
+    <tr>
+      <th>newdata</th>
+      <td><p>A vector of observed y values for one sample.</p></td>
+    </tr>
+    <tr>
+      <th>&#8230;</th>
+      <td><p>Placeholder for further arguments that might be needed by 
+    future implementations.</p></td>
+    </tr>
+    <tr>
+      <th>ws</th>
+      <td><p>The weight attributed to the sample. This argument is obligatory
+    if <code>object</code> has weights.</p></td>
+    </tr>
+    <tr>
+      <th>alpha</th>
+      <td><p>The error tolerance level for the confidence interval to be reported.</p></td>
+    </tr>
+    <tr>
+      <th>var.s</th>
+      <td><p>The estimated variance of the sample measurements. The default is to take
     the residual standard error from the calibration and to adjust it
     using <code>ws</code>, if applicable. This means that <code>var.s</code>
-    overrides <code>ws</code>.
-  </dd>
-    </dl>
+    overrides <code>ws</code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -201,7 +220,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -18,19 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -69,56 +75,78 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Function reference</h1>
-      <h4>version&nbsp;0.1-37.9001</h4>
+      <h1>
+        Reference
+        <small>version&nbsp;0.1-37.9001</small>
+      </h1>
     </div>
 
     <div class="contents">
-      <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-      <p class="section-desc"></p>
+      <table class="ref-index">
 
-      
-      <p><a href="calplot.lm.html">Plot calibration graphs from univariate linear models</a></p>
-      <ul>
-        <li><code><a href="calplot.lm.html">calplot</a></code></li><li><code><a href="calplot.lm.html">calplot.default</a></code></li><li><code><a href="calplot.lm.html">calplot.lm</a></code></li>
-      </ul>
-      
-      <p><a href="chemCal-package.html">
-</a></p>
-      <ul>
-        <li><code><a href="chemCal-package.html">chemCal-package</a></code></li>
-      </ul>
-      
-      <p><a href="din32645.html">Calibration data from DIN 32645</a></p>
-      <ul>
-        <li><code><a href="din32645.html">din32645</a></code></li>
-      </ul>
-      
-      <p><a href="inverse.predict.html">Predict x from y for a linear calibration</a></p>
-      <ul>
-        <li><code><a href="inverse.predict.html">inverse.predict</a></code></li><li><code><a href="inverse.predict.html">inverse.predict.lm</a></code></li><li><code><a href="inverse.predict.html">inverse.predict.rlm</a></code></li><li><code><a href="inverse.predict.html">inverse.predict.default</a></code></li>
-      </ul>
-      
-      <p><a href="lod.html">Estimate a limit of detection (LOD)</a></p>
-      <ul>
-        <li><code><a href="lod.html">lod</a></code></li><li><code><a href="lod.html">lod.lm</a></code></li><li><code><a href="lod.html">lod.rlm</a></code></li><li><code><a href="lod.html">lod.default</a></code></li>
-      </ul>
-      
-      <p><a href="loq.html">Estimate a limit of quantification (LOQ)</a></p>
-      <ul>
-        <li><code><a href="loq.html">loq</a></code></li><li><code><a href="loq.html">loq.lm</a></code></li><li><code><a href="loq.html">loq.rlm</a></code></li><li><code><a href="loq.html">loq.default</a></code></li>
-      </ul>
-      
-      <p><a href="massart97ex1.html">Calibration data from Massart et al. (1997), example 1</a></p>
-      <ul>
-        <li><code><a href="massart97ex1.html">massart97ex1</a></code></li>
-      </ul>
-      
-      <p><a href="massart97ex3.html">Calibration data from Massart et al. (1997), example 3</a></p>
-      <ul>
-        <li><code><a href="massart97ex3.html">massart97ex3</a></code></li>
-      </ul>
-    
+      <colgroup>
+        <col class="alias" />
+        <col class="title" />
+      </colgroup>
+
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="calplot.lm.html">calplot</a></code> </p>
+          </td>
+          <td><p>Plot calibration graphs from univariate linear models</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="chemCal-package.html">chemCal-package</a></code> </p>
+          </td>
+          <td><p>Calibration functions for analytical chemistry</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="din32645.html">data</a></code> </p>
+          </td>
+          <td><p>Calibration data from DIN 32645</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="inverse.predict.html">inverse.predict</a></code> </p>
+          </td>
+          <td><p>Predict x from y for a linear calibration</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="lod.html">lod</a></code> </p>
+          </td>
+          <td><p>Estimate a limit of detection (LOD)</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="loq.html">loq</a></code> </p>
+          </td>
+          <td><p>Estimate a limit of quantification (LOQ)</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="massart97ex1.html">data</a></code> </p>
+          </td>
+          <td><p>Calibration data from Massart et al. (1997), example 1</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="massart97ex3.html">data</a></code> </p>
+          </td>
+          <td><p>Calibration data from Massart et al. (1997), example 3</p></td>
+        </tr>
+      </tbody>
+      </table>
     </div>
   </div>
 
@@ -136,7 +164,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
