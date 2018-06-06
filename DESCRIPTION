@@ -16,3 +16,4 @@ Description: Simple functions for plotting linear
 License: GPL (>= 2)
 URL: http://www.r-project.org,
   http://chem.uft.uni-bremen.de/ranke/?page=chemCal, http://cgit.jrwb.de/chemCal
+RoxygenNote: 6.0.1
