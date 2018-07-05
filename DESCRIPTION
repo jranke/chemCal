@@ -1,11 +1,11 @@
 Package: chemCal
-Version: 0.1-37.9001
-Date: 2017-03-15
+Version: 0.2.1
+Date: 2018-07-05
 Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de",
                     comment = c(ORCID = "0000-0003-4371-6538")))
-Suggests: MASS
+Suggests: MASS, knitr, testthat
 Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A
@@ -14,6 +14,10 @@ Description: Simple functions for plotting linear
 	The functions work on model objects from - optionally weighted - linear
 	regression (lm) or robust linear regression ('rlm' from the 'MASS' package).
 License: GPL (>= 2)
-URL: http://www.r-project.org,
-  http://chem.uft.uni-bremen.de/ranke/?page=chemCal, http://cgit.jrwb.de/chemCal
+LazyLoad: yes
+LazyData: yes
+VignetteBuilder: knitr
+Encoding: UTF-8
+BugReports: http://github.com/jranke/chemCal/issues
+URL: https://pkgdown.jrwb.de/chemCal, https://cgit.jrwb.de/chemCal/about
 RoxygenNote: 6.0.1

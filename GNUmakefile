@@ -15,25 +15,16 @@ README.html: README.md
 build:
 	"$(RBIN)/R" CMD build .
 
-build-no-vignettes:
-	"$(RBIN)/R" CMD build --no-build-vignettes .
-
 install: build
-	"$(RBIN)/R" CMD INSTALL $(TGZ)
-
-install-no-vignettes: build-no-vignettes
 	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
 check: build
 	"$(RBIN)/R" CMD check --as-cran $(TGZ)
 
-check-no-vignettes: build-no-vignettes
-	"$(RBIN)/R" CMD check --as-cran $(TGZ)
-
-vignettes/%.pdf: vignettes/%.Rnw
+vignettes/%.html: vignettes/%.Rmd
 	"$(RBIN)/Rscript" -e "tools::buildVignette(file = 'vignettes/$*.Rnw', dir = 'vignettes')"
 
-vignettes: vignettes/chemCal.pdf
+vignettes: vignettes/chemCal.html
 
 pd:
 	"$(RBIN)/Rscript" -e "pkgdown::build_site()"
@@ -46,3 +37,6 @@ winbuilder: build
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-release/
 	@echo "Uploading to R-devel on win-builder"
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
+
+test: install
+	NOT_CRAN=true "$(RBIN)/Rscript" -e 'devtools::test()'

@@ -48,6 +48,7 @@ lod.lm <- function(object, ..., alpha = 0.05, beta = 0.05, method = "default", t
     newdata <- data.frame(x = lod.x)
     names(newdata) <- xname
     lod.y <-  predict(object, newdata)
+    names(lod.y) <- NULL
   }
   lod <- list(lod.x, lod.y)
   names(lod) <- c(xname, yname)

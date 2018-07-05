@@ -35,6 +35,7 @@ loq.lm <- function(object, ..., alpha = 0.05, k = 3, n = 1, w.loq = "auto",
   newdata <- data.frame(x = loq.x)
   names(newdata) <- xname
   loq.y <- predict(object, newdata)
+  names(loq.y) <- NULL
   loq <- list(loq.x, loq.y)
   names(loq) <- c(xname, yname)
   return(loq)
