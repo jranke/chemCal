@@ -51,7 +51,7 @@
   This is elaborated in the package vignette.
 }
 \note{
-  The function was validated with examples 7 and 8 from Massart et al. (1997).
+  The function was validated with examples 7 and 8 from Massart et al. (1997). 
 }
 \references{
   Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J.,

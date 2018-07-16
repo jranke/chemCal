@@ -23,10 +23,9 @@ inverse.predict.lm <- function(object, newdata, ...,
     ws <- ifelse(length(object$weights) > 0, mean(object$weights), 1)
   }
   if (length(object$weights) > 0) {
-    wx <- split(object$weights,object$model[[xname]])
-    w <- sapply(wx,mean)
+    w <- object$weights
   } else {
-    w <- rep(1,length(split(object$model[[yname]],object$model[[xname]])))
+    w <- rep(1, nrow(object$model))
   }
   .inverse.predict(object = object, newdata = newdata, 
     ws = ws, alpha = alpha, var.s = var.s, w = w, xname = xname, yname = yname)
@@ -40,8 +39,7 @@ inverse.predict.rlm <- function(object, newdata, ...,
   if (ws == "auto") {
     ws <- mean(object$w)
   }
-  wx <- split(object$weights,object$model[[xname]])
-  w <- sapply(wx,mean)
+  w <- object$w
   .inverse.predict(object = object, newdata = newdata, 
     ws = ws, alpha = alpha, var.s = var.s, w = w, xname = xname, yname = yname)
 }
@@ -57,14 +55,13 @@ inverse.predict.rlm <- function(object, newdata, ...,
   ybars <- mean(newdata)
   m <- length(newdata)
 
-  yx <- split(object$model[[yname]], object$model[[xname]])
-  n <- length(yx)
+  n <- nrow(object$model)
   df <- n - length(object$coef)
-  x <- as.numeric(names(yx))
-  ybar <- sapply(yx,mean)
-  yhatx <- split(object$fitted.values, object$model[[xname]])
-  yhat <- sapply(yhatx, mean)
-  se <- sqrt(sum(w * (ybar - yhat)^2)/df)
+  xi <- object$model[[2]]
+  yi <- object$model[[1]]
+  yihat <- object$fitted.values
+
+  se <- sqrt(sum(w * (yi - yihat)^2)/df)
 
   if (var.s == "auto") {
     var.s <- se^2/ws
@@ -72,14 +69,14 @@ inverse.predict.rlm <- function(object, newdata, ...,
 
   b1 <- object$coef[[xname]]
 
-  ybarw <- sum(w * ybar)/sum(w)
+  ybarw <- sum(w * yi)/sum(w)
 
 # This is the adapted form of equation 8.28 (see package vignette)
   sxhats <- 1/b1 * sqrt(
     (var.s / m) + 
     se^2 * (1/sum(w) + 
       (ybars - ybarw)^2 * sum(w) /
-        (b1^2 * (sum(w) * sum(w * x^2) - sum(w * x)^2)))
+        (b1^2 * (sum(w) * sum(w * xi^2) - sum(w * xi)^2)))
   )
 
   if (names(object$coef)[1] == "(Intercept)") {

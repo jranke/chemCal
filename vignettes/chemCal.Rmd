@@ -107,9 +107,9 @@ with
 s_e = \sqrt{ \frac{\sum w_i (y_i - \hat{y_i})^2}{n - 2}}
 \end{equation}
 
-where $w_i$ is the weight for calibration standard $i$, $y_i$ is the mean $y$
-value (!) observed for standard $i$, $\hat{y_i}$ is the estimated value for
-standard $i$, $n$ is the number calibration standards, $w_s$ is the weight
+where $w_i$ is the weight for calibration standard $i$, $y_i$ is the $y$
+value observed for standard $i$, $\hat{y_i}$ is the estimated value for
+standard $i$, $n$ is the number of calibration samples, $w_s$ is the weight
 attributed to the sample $s$, $m$ is the number of replicate measurements of
 sample $s$, $\bar{y_s}$ is the mean response for the sample,
 $\bar{y_w} = \frac{\sum{w_i y_i}}{\sum{w_i}}$ is the weighted mean of responses
