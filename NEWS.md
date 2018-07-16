@@ -1,10 +1,12 @@
-# chemCal 0.2.1 (2018-07-06)
+# chemCal 0.2.1 (2018-07-16)
 
 - 'lod' and 'loq': In the lists that are returned, return the list component 'y' without names, because we always have a single element in 'y' and the name '1' is meaningless 
 
 - Use testthat for tests to simplify further development
 
 - Convert vignette to html
+
+- Add another example dataset, from an online course at the University of Toronto
 
 # chemCal 0.1-33 (2014-04-24)
 
