@@ -1,4 +1,4 @@
-# chemCal
+# chemCal - Calibration functions for analytical chemistry
 
 [![](https://www.r-pkg.org/badges/version/chemCal)](https://cran.r-project.org/package=chemCal)
 
