@@ -1,11 +1,6 @@
 GNUmakefile
-out$
-toc$
-bbl$
-blg$
-aux$
-log$
-vignettes/chemCal.tex
-vignettes/chemCal.pdf
-vignettes/chemCal.R
+build.log$
 chemCal_.*.tar.gz
+docs
+_pkgdown.yml
+README.html

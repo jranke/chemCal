@@ -1,12 +1,16 @@
-# chemCal 0.2.1 (2018-07-16)
+# chemCal 0.2.1 (2018-07-17)
 
-- 'lod' and 'loq': In the lists that are returned, return the list component 'y' without names, because we always have a single element in 'y' and the name '1' is meaningless 
+- 'inverse.predict': Do not work on the means of the calibration standards any more, as this ignores the variability of y values about the means. Thanks to Anna Burniol Figols for pointing out this issue
 
-- Use testthat for tests to simplify further development
+- Use testthat for tests to simplify development. Adapt the tests using data with replicate standard measurements to work on the means in order to show the relation to 'inverse.predict' from earlier versions. Include comparisons with investr::calibrate(method = 'Wald') for unweighted regressions. Include tests with more precision to check for changes in numerical output across versions.
 
-- Convert vignette to html
+- 'lod' and 'loq': In the lists that are returned, return the list component 'y' without names, because we always only have a single element in 'y' (previously the name '1' was returned).
 
-- Add another example dataset, from an online course at the University of Toronto
+- Convert vignette to html and explain the changes to 'inverse.predict'
+
+- Add two example dataset, one from an online course at the University of Toronto, one from Rocke and Lorenzato (1995)
+
+- Update static documentation
 
 # chemCal 0.1-33 (2014-04-24)
 

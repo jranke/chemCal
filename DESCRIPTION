@@ -1,11 +1,11 @@
 Package: chemCal
 Version: 0.2.1
-Date: 2018-07-05
+Date: 2018-07-17
 Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de",
                     comment = c(ORCID = "0000-0003-4371-6538")))
-Suggests: MASS, knitr, testthat
+Suggests: MASS, knitr, testthat, investr
 Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A

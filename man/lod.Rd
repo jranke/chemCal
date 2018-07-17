@@ -74,7 +74,6 @@
   Analytica Chimica Acta 391, 105 - 126.
 }
 \examples{
-data(din32645)
 m <- lm(y ~ x, data = din32645)
 lod(m) 
 

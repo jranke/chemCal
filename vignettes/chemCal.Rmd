@@ -8,19 +8,14 @@ output:
     toc_float: true
     code_folding: show
     fig_retina: null
-bibliography: refs.bib
+bibliography: references.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Introduction to chemCal}
+  %\VignetteEncoding{UTF-8}
 ---
 
-[Wissenschaftlicher Berater, Kronacher Str. 12, 79639 Grenzach-Wyhlen, Germany](http://www.jrwb.de)<br />
-
-```{r, include = FALSE}
-require(knitr)
-opts_chunk$set(engine='R', tidy=FALSE)
-```
-# Basic calibration functions for analytical chemistry
+# Basic calibration functions
 
 The `chemCal` package was first designed in the course of a lecture and lab
 course on "Analytics of Organic Trace Contaminants" at the University of Bremen
@@ -28,13 +23,17 @@ from October to December 2004. In the fall 2005, an email exchange with
 Ron Wehrens led to the belief that it would be desirable to implement the
 inverse prediction method given in @massart97 since it also covers the
 case of weighted regression. Studies of the IUPAC orange book and of DIN 32645
-as well as publications by Currie and the Analytical Method Committee of the
-Royal Society of Chemistry and a nice paper by Castillo and Castells provided
-further understanding of the matter.
+(equivalent to ISO 11843), publications by @currie97 and the Analytical
+Method Committee of the Royal Society of Chemistry [@amc89] and a nice paper by
+Castells and Castillo [@castells00] provided some further understanding of the matter.
 
-At the moment, the package consists of four functions, working on univariate
-linear models of class `lm` or `rlm`, plus two datasets for
-validation.
+At the moment, the package consists of four functions 
+([calplot](https://pkgdown.jrwb.de/chemCal/reference/calplot.lm.html),
+[lod](https://pkgdown.jrwb.de/chemCal/reference/lod.html),
+[loq](https://pkgdown.jrwb.de/chemCal/reference/loq.html) and
+[inverse.predict](https://pkgdown.jrwb.de/chemCal/reference/inverse.predict.html)),
+working on univariate linear models of class `lm` or `rlm`, plus several
+datasets for validation.
 
 A [bug report](http://bugs.r-project.org/bugzilla3/show_bug.cgi?id=8877)
 and the following e-mail exchange on the r-devel mailing list about
@@ -42,8 +41,21 @@ prediction intervals from weighted regression entailed some further studies
 on this subject. However, I did not encounter any proof or explanation of the
 formula cited below yet, so I can't really confirm that Massart's method is correct.
 
+In fact, in June 2018 I was made aware of the fact that the inverse prediction
+method implemented in chemCal version 0.1.37 and before did not take the
+variance of replicate calibration standards about their means into account, nor
+the number of replicates when calculating the degrees of freedom. Thanks to
+PhD student Anna Burniol Figols for reporting this issue!
+
+As a consequence, I rewrote `inverse.predict` not to automatically work with
+the mean responses for each calibration standard any more. The example
+calculations from @massart97 can still be reproduced when the regression model
+is calculated using the means of the calibration data as shown below.
+
+# Usage
+
 When calibrating an analytical method, the first task is to generate a suitable
-model. If we want to use the `chemCal` functions, we will have to restrict
+model. If we want to use the `chemCal` functions, we have to restrict
 ourselves to univariate, possibly weighted, linear regression so far.
 
 Once such a model has been created, the calibration can be graphically
@@ -64,16 +76,21 @@ plot(m0, which=3)
 ```
 
 Therefore, in Example 8 in @massart97, weighted regression
-is proposed which can be reproduced by
+is proposed which can be reproduced by the following code.
+Note that we are building the model on the mean values for
+each standard in order to be able to reproduce the results
+given in the book with the current version of chemCal.
 
 ```{r, message = FALSE, echo = TRUE}
-attach(massart97ex3)
-yx <- split(y, x)
-ybar <- sapply(yx, mean)
-s <- round(sapply(yx, sd), digits = 2)
-w <- round(1 / (s^2), digits = 3)
-weights <- w[factor(x)]
-m <- lm(y ~ x, w = weights)
+weights <- with(massart97ex3, {
+  yx <- split(y, x)
+  ybar <- sapply(yx, mean)
+  s <- round(sapply(yx, sd), digits = 2)
+  w <- round(1 / (s^2), digits = 3)
+})
+massart97ex3.means <- aggregate(y ~ x, massart97ex3, mean)
+
+m <- lm(y ~ x, w = weights, data = massart97ex3.means)
 ```
 
 If we now want to predict a new x value from measured y values,
@@ -88,7 +105,7 @@ The weight `ws` assigned to the measured y value has to be
 given by the user in the case of weighted regression, or alternatively,
 the approximate variance `var.s` at this location.
 
-# Some theory for `inverse.predict`
+# Background for `inverse.predict`
 
 Equation 8.28 in @massart97 gives a general equation for predicting the
 standard error $s_{\hat{x_s}}$ for an $x$ value predicted from measurements of
@@ -107,20 +124,32 @@ with
 s_e = \sqrt{ \frac{\sum w_i (y_i - \hat{y_i})^2}{n - 2}}
 \end{equation}
 
-where $w_i$ is the weight for calibration standard $i$, $y_i$ is the $y$
-value observed for standard $i$, $\hat{y_i}$ is the estimated value for
-standard $i$, $n$ is the number of calibration samples, $w_s$ is the weight
-attributed to the sample $s$, $m$ is the number of replicate measurements of
-sample $s$, $\bar{y_s}$ is the mean response for the sample,
-$\bar{y_w} = \frac{\sum{w_i y_i}}{\sum{w_i}}$ is the weighted mean of responses
-$y_i$, and $x_i$ is the given $x$ value for standard $i$.
+In chemCal version before 0.2, I interpreted $w_i$ to be the weight for
+calibration standard $i$, $y_i$ to be the mean value observed for standard $i$,
+and $n$ to be the number of calibration standards. With this implementation
+I was able to reproduce the examples given in the book. However, as noted above,
+I was made aware of the fact that this way of calculation does not take the
+variation of the y values about the means into account. Furthermore, I noticed
+that for the case of unweighted linear calibration with replicate standards,
+`inverse.predict` produced different results than `calibrate` from the
+`investr` package when using the Wald method.
+
+Both issues are now addressed in chemCal starting from version 0.2.1. Here,
+$y_i$ is calibration measurement $i$, $\hat{y_i}$ is the estimated value for
+calibration measurement $i$ and $n$ is the total number of calibration
+measurements.
+
+$w_s$ is the weight attributed to the sample $s$, $m$ is the number of
+replicate measurements of sample $s$, $\bar{y_s}$ is the mean response for the
+sample, $\bar{y_w} = \frac{\sum{w_i y_i}}{\sum{w_i}}$ is the weighted mean of
+responses $y_i$, and $x_i$ is the given $x$ value for standard $i$.
 
 The weight $w_s$ for the sample should be estimated or calculated in accordance
 to the weights used in the linear regression.
 
-I adjusted the above equation in order to be able to take a different
+I had also adjusted the above equation in order to be able to take a different
 precisions in standards and samples into account. In analogy to Equation 8.26
-from \cite{massart97} we get
+from \cite{massart97} I am using
 
 \begin{equation}
 s_{\hat{x_s}} = \frac{1}{b_1} \sqrt{\frac{{s_s}^2}{w_s m} +

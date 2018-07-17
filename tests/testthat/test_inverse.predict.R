@@ -23,20 +23,23 @@ test_that("Inverse predictions for unweighted regressions are stable", {
 })
 
 test_that("Inverse predictions for weighted regressions are stable", {
-  attach(massart97ex3)
-  yx <- split(y, x)
-  ybar <- sapply(yx, mean)
-  s <- round(sapply(yx, sd), digits = 2)
-  w <- round(1 / (s^2), digits = 3)
-  weights <- w[factor(x)]
-  m3 <- lm(y ~ x, w = weights)
+  weights <- with(massart97ex3, {
+    yx <- split(y, x)
+    ybar <- sapply(yx, mean)
+    s <- round(sapply(yx, sd), digits = 2)
+    w <- round(1 / (s^2), digits = 3)
+  })
 
-  p3.1 <- inverse.predict(m3, 15, ws = 1.67)
+  massart97ex3.means <- aggregate(y ~ x, massart97ex3, mean)
+
+  m3.means <- lm(y ~ x, w = weights, data = massart97ex3.means)
+
+  p3.1 <- inverse.predict(m3.means, 15, ws = 1.67)
   expect_equal(signif(p3.1$Prediction, 7), 5.865367)
   expect_equal(signif(p3.1$`Standard Error`, 7), 0.8926109)
   expect_equal(signif(p3.1$Confidence, 7), 2.478285)
 
-  p3.2 <- inverse.predict(m3, 90, ws = 0.145)
+  p3.2 <- inverse.predict(m3.means, 90, ws = 0.145)
   expect_equal(signif(p3.2$Prediction, 7), 44.06025)
   expect_equal(signif(p3.2$`Standard Error`, 7), 2.829162)
   expect_equal(signif(p3.2$Confidence, 7), 7.855012)

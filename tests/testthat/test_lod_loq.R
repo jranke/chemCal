@@ -15,7 +15,11 @@ test_that("lod is stable across chemCal versions", {
 })
 
 test_that("loq is stable across chemCal versions", {
-  m2 <- lm(y ~ x, data = massart97ex3)
+  # Actually it was not stable between chemCal <0.2 and 
+  # chemCal > 0.2, so we needed to adapt the test
+  # to work on a model on the means
+  massart97ex3_means <- aggregate(y ~ x, massart97ex3, mean)
+  m2 <- lm(y ~ x, data = massart97ex3_means)
   loq_1 <- loq(m2)
   expect_equal(signif(loq_1$x, 7), 13.97764)
   expect_equal(signif(loq_1$y, 7), 30.6235)

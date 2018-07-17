@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calibration data from Massart et al. (1997), example 1 — massart97ex1 • chemCal</title>
+<title>Changelog • chemCal</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,7 @@
 
 
 
-<meta property="og:title" content="Calibration data from Massart et al. (1997), example 1 — massart97ex1" />
-
-<meta property="og:description" content="Sample dataset from p. 175 to test the package." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -49,7 +46,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -98,41 +95,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calibration data from Massart et al. (1997), example 1</h1>
-    
-    <div class="hidden name"><code>massart97ex1.Rd</code></div>
-    </div>
-
-    <div class="ref-description">
-    
-    <p>Sample dataset from p. 175 to test the package.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>data</span>(<span class='no'>massart97ex1</span>)</pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>A dataframe containing 6 observations of x and y data.</p>
-    
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J.,
-  Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and Qualimetrics: Part A,
-  Chapter 8.</p>
-    
-
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
+      <h1>Changelog <small></small></h1>
       
-      <li><a href="#format">Format</a></li>
+    </div>
 
-      <li><a href="#source">Source</a></li>
-          </ul>
-
+    <div id="chemcal-0-2-1-2018-07-17" class="section level1">
+<h1 class="page-header">
+<a href="#chemcal-0-2-1-2018-07-17" class="anchor"></a>chemCal 0.2.1 (2018-07-17)<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>‘inverse.predict’: Do not work on the means of the calibration standards any more, as this ignores the variability of y values about the means</p></li>
+<li><p>Use testthat for tests to simplify further development. Adapt the tests using data with replicate standard measurements to work on the means in order to show the relation to ‘inverse.predict’ from earlier versions. Include comparisons with investr::calibrate(method = ‘Wald’) for unweighted regressions. Include tests with more precision to check for changes in numerical output across versions.</p></li>
+<li><p>‘lod’ and ‘loq’: In the lists that are returned, return the list component ‘y’ without names, because we always only have a single element in ‘y’ (previously the name ‘1’ was returned).</p></li>
+<li><p>Convert vignette to html and explain the changes to ‘inverse.predict’</p></li>
+<li><p>Add two example dataset, one from an online course at the University of Toronto, one from Rocke and Lorenzato (1995)</p></li>
+</ul>
+</div>
+    <div id="chemcal-0-1-33-2014-04-24" class="section level1">
+<h1 class="page-header">
+<a href="#chemcal-0-1-33-2014-04-24" class="anchor"></a>chemCal 0.1-33 (2014-04-24)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Bugfix in lod() and loq(): In the case of small absolute x values (e.g. on the order of 1e-4 and smaller), the lod or loq calculated using the default method could produce inaccurate results as the default tolerance that was used in the internal call to optimize is inappropriate in such cases. Now a reasonable default is used which can be overriden by the user. Thanks to Jérôme Ambroise for reporting the bug.</li>
+</ul>
+<p>For a detailed list of changes to the chemCal source please consult the commit history on <a href="https://cgit.jrwb.de/chemCal" class="uri">https://cgit.jrwb.de/chemCal</a></p>
+</div>
   </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#chemcal-0-2-1-2018-07-17">0.2.1</a></li>
+        <li><a href="#chemcal-0-1-33-2014-04-24">0.1-33</a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
       <footer>

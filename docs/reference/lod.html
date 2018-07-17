@@ -68,17 +68,26 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chemCal</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.37.9001</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions and data</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/chemCal.pdf">Short manual (pdf)</a>
+  <a href="../articles/chemCal.html">Get started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -184,18 +193,16 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Examples for <code>din32645</code></p></div>
+    <div class='dont-index'><p>Examples for <code><a href='din32645.html'>din32645</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>din32645</span>)
-<span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>din32645</span>)
+    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>din32645</span>)
 <span class='fu'>lod</span>(<span class='no'>m</span>)</div><div class='output co'>#&gt; $x
 #&gt; [1] 0.08655484
 #&gt; 
 #&gt; $y
-#&gt;        1 
-#&gt; 3317.154 
+#&gt; [1] 3317.154
 #&gt; </div><div class='input'>
 <span class='co'># The critical value (decision limit, German Nachweisgrenze) can be obtained</span>
 <span class='co'># by using beta = 0.5:</span>
@@ -203,8 +210,7 @@
 #&gt; [1] 0.0698127
 #&gt; 
 #&gt; $y
-#&gt;        1 
-#&gt; 3155.393 
+#&gt; [1] 3155.393
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

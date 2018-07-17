@@ -1,5 +1,0 @@
-- lod(): At the moment, it is not possible to calculate an lod for the
-  case of more than one replicates (m is fixed to 1). The formula
-  for the prediction of y from mean(x) in Massart et al, p. 433
-  could be used to generalize this.
-- Write methods for nonlinear calibration functions

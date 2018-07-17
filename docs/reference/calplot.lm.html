@@ -62,17 +62,26 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chemCal</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.37.9001</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions and data</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/chemCal.pdf">Short manual (pdf)</a>
+  <a href="../articles/chemCal.html">Get started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -134,7 +143,7 @@
       <th>alpha</th>
       <td><p>The error tolerance level for the confidence and prediction bands. Note that this 
     includes both tails of the Gaussian distribution, unlike the alpha and beta parameters
-    used in <code>lod</code> (see note below).</p></td>
+    used in <code><a href='lod.html'>lod</a></code> (see note below).</p></td>
     </tr>
     <tr>
       <th>varfunc</th>
@@ -157,7 +166,7 @@
   the internally used function <code>predict.lm</code>, therefore,
   <code>calplot</code> does not draw prediction bands for such models.</p>  
 <p>It is possible to compare the <code>calplot</code> prediction bands with the
-  <code>lod</code> values if the <code>lod()</code> alpha and beta parameters are
+  <code><a href='lod.html'>lod</a></code> values if the <code><a href='lod.html'>lod()</a></code> alpha and beta parameters are
   half the value of the <code>calplot()</code> alpha parameter.</p>
     
 

@@ -68,9 +68,7 @@
     and therefore not tested. Feedback is welcome.
 }
 \examples{
-data(massart97ex3)
-attach(massart97ex3)
-m <- lm(y ~ x)
+m <- lm(y ~ x, data = massart97ex1)
 loq(m)
 
 # We can get better by using replicate measurements
