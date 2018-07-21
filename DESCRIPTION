@@ -1,6 +1,6 @@
 Package: chemCal
-Version: 0.2.1
-Date: 2018-07-17
+Version: 0.2.2
+Date: 2018-07-21
 Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de",

@@ -1,9 +1,9 @@
-\name{rl95_toluene}
+\name{rl95_cadmium}
 \docType{data}
-\alias{rl95_toluene}
-\title{Toluene amounts measured by GC/MS as reported by Rocke and Lorenzato (1995)}
+\alias{rl95_cadmium}
+\title{Cadmium concentrations measured by AAS as reported by Rocke and Lorenzato (1995)}
 \description{
-  Dataset reproduced from Table 4 in Rocke and Lorenzato (1995).
+  Dataset reproduced from Table 1 in Rocke and Lorenzato (1995).
 }
 \format{
   A dataframe containing four replicate observations for each 
