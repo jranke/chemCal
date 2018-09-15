@@ -4,3 +4,4 @@ chemCal_.*.tar.gz
 docs
 _pkgdown.yml
 README.html
+.travis.yml
