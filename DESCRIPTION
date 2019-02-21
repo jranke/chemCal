@@ -5,7 +5,7 @@ Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
                     email = "jranke@uni-bremen.de",
                     comment = c(ORCID = "0000-0003-4371-6538")))
-Suggests: MASS, knitr, testthat, investr
+Suggests: MASS, knitr, testthat, investr, covr
 Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A
@@ -20,4 +20,4 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 BugReports: http://github.com/jranke/chemCal/issues
 URL: https://pkgdown.jrwb.de/chemCal, https://cgit.jrwb.de/chemCal/about
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
