@@ -9,7 +9,8 @@
 }
 \usage{
   calplot(object, xlim = c("auto", "auto"), ylim = c("auto", "auto"),
-    xlab = "Concentration", ylab = "Response", alpha=0.05, varfunc = NULL)
+    xlab = "Concentration", ylab = "Response", legend_x = "auto",
+    alpha=0.05, varfunc = NULL)
 }
 \arguments{
   \item{object}{
@@ -28,6 +29,9 @@
   }
   \item{ylab}{
     The label of the y axis.
+  }
+  \item{legend_x}{
+    An optional numeric value for adjusting the x coordinate of the legend.
   }
   \item{alpha}{
     The error tolerance level for the confidence and prediction bands. Note that this 

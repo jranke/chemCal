@@ -1,7 +1,8 @@
 calplot <- function(object, 
   xlim = c("auto", "auto"), ylim = c("auto", "auto"), 
-  xlab = "Concentration", ylab = "Response", alpha = 0.05,
-  varfunc = NULL)
+  xlab = "Concentration", ylab = "Response",
+  legend_x = "auto", 
+  alpha = 0.05, varfunc = NULL)
 {
   UseMethod("calplot")
 }
@@ -9,6 +10,7 @@ calplot <- function(object,
 calplot.default <- function(object, 
   xlim = c("auto","auto"), ylim = c("auto","auto"), 
   xlab = "Concentration", ylab = "Response",
+  legend_x = "auto",
   alpha=0.05, varfunc = NULL)
 {
   stop("Calibration plots only implemented for univariate lm objects.")
@@ -16,8 +18,9 @@ calplot.default <- function(object,
 
 calplot.lm <- function(object,
   xlim = c("auto","auto"), ylim = c("auto","auto"), 
-  xlab = "Concentration", ylab = "Response", alpha=0.05,
-  varfunc = NULL)
+  xlab = "Concentration", ylab = "Response",
+  legend_x = "auto", 
+  alpha=0.05, varfunc = NULL)
 {
   if (length(object$coef) > 2)
     stop("More than one independent variable in your model - not implemented")
@@ -47,6 +50,7 @@ calplot.lm <- function(object,
   yrange.auto <- range(c(0,pred.lim))
   if (ylim[1] == "auto") ylim[1] <- yrange.auto[1]
   if (ylim[2] == "auto") ylim[2] <- yrange.auto[2]
+  if (legend_x[1] == "auto") legend_x <- min(object$model[[2]])
   plot(1,
     type = "n", 
     xlab = xlab,
@@ -68,7 +72,7 @@ calplot.lm <- function(object,
   } else {
   matlines(newdata[[1]], conf.lim, lty = c(1, 3, 3), 
     col = c("black", "green4", "green4"))
-  legend(min(x), 
+  legend(legend_x,
     max(pred.lim, na.rm = TRUE), 
     legend = c("Fitted Line", "Confidence Bands", 
         "Prediction Bands"), 

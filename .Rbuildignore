@@ -1,8 +1,10 @@
 GNUmakefile
 build.log$
+check.log$
 chemCal_.*.tar.gz
 docs
 _pkgdown.yml
 README.html
 .travis.yml
 experimental
+test.log$

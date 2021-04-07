@@ -37,7 +37,7 @@ install: build
 	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
 check: build
-	"$(RBIN)/R" CMD check --as-cran $(TGZ)
+	"$(RBIN)/R" CMD check --as-cran $(TGZ) 2>&1 | tee check.log
 
 vignettes/%.html: vignettes/%.Rmd vignettes/refs.bib
 	"$(RBIN)/Rscript" -e "tools::buildVignette(file = 'vignettes/$*.Rmd', dir = 'vignettes')"
@@ -56,7 +56,8 @@ winbuilder: build
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
 
 test: install
-	NOT_CRAN=true "$(RBIN)/Rscript" -e 'devtools::test()'
+	NOT_CRAN=true "$(RBIN)/Rscript" -e 'devtools::test()' 2>&1 | tee test.log
+	sed -i -e "s/\r.*\r//" test.log
 
 clean:
 	$(RM) -r vignettes/*_cache

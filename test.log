@@ -1,0 +1,13 @@
+Loading chemCal
+Testing chemCal
+✔ |  OK F W S | Context
+✔ |  16       | Compare with investr::calibrate [0.2 s]
+✔ |   5       | Known results for the dataset provided in DIN 32645
+✔ |  15       | Inverse predictions
+✔ |   8       | LOD and LOQ
+✔ |  10       | Known results for the example datasets provided by Massart (1997)
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 0.4 s
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 54 ]

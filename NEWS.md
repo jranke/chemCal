@@ -1,3 +1,7 @@
+# chemCal 0.2.3
+
+- 'calplot' gains an argument 'legend_x' for better control of the legend position
+
 # chemCal 0.2.2
 
 - Added the cadmium dataset from Rocke and Lorenzato (1995)
