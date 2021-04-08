@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -97,7 +97,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="http://github.com/jranke/chemCal/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,7 +123,7 @@
     <p>Sample dataset from p. 188 to test the package.</p>
     </div>
 
-    <pre class="usage"><span class='no'>massart97ex3</span></pre>
+    <pre class="usage"><span class='va'>massart97ex3</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -139,19 +139,20 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># For reproducing the results for replicate standard measurements in example 8,</span>
 <span class='co'># we need to do the calibration on the means when using chemCal &gt; 0.2</span>
-<span class='no'>weights</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='no'>massart97ex3</span>, {
-  <span class='no'>yx</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span>(<span class='no'>y</span>, <span class='no'>x</span>)
-  <span class='no'>ybar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>yx</span>, <span class='no'>mean</span>)
-  <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>yx</span>, <span class='no'>sd</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-  <span class='no'>w</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fl'>1</span> / (<span class='no'>s</span>^<span class='fl'>2</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-})
+<span class='va'>weights</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>massart97ex3</span>, <span class='op'>{</span>
+  <span class='va'>yx</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>)</span>
+  <span class='va'>ybar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>yx</span>, <span class='va'>mean</span><span class='op'>)</span>
+  <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>yx</span>, <span class='va'>sd</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+  <span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>1</span> <span class='op'>/</span> <span class='op'>(</span><span class='va'>s</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
 
-<span class='no'>massart97ex3.means</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aggregate.html'>aggregate</a></span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='no'>massart97ex3</span>, <span class='no'>mean</span>)
+<span class='va'>massart97ex3.means</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aggregate.html'>aggregate</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, <span class='va'>massart97ex3</span>, <span class='va'>mean</span><span class='op'>)</span>
 
-<span class='no'>m3.means</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>w</span> <span class='kw'>=</span> <span class='no'>weights</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>massart97ex3.means</span>)
+<span class='va'>m3.means</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, w <span class='op'>=</span> <span class='va'>weights</span>, data <span class='op'>=</span> <span class='va'>massart97ex3.means</span><span class='op'>)</span>
 
 <span class='co'># The following concords with the book p. 200</span>
-<span class='fu'><a href='inverse.predict.html'>inverse.predict</a></span>(<span class='no'>m3.means</span>, <span class='fl'>15</span>, <span class='kw'>ws</span> <span class='kw'>=</span> <span class='fl'>1.67</span>)  <span class='co'># 5.9 +- 2.5</span></div><div class='output co'>#&gt; $Prediction
+<span class='fu'><a href='inverse.predict.html'>inverse.predict</a></span><span class='op'>(</span><span class='va'>m3.means</span>, <span class='fl'>15</span>, ws <span class='op'>=</span> <span class='fl'>1.67</span><span class='op'>)</span>  <span class='co'># 5.9 +- 2.5</span>
+</div><div class='output co'>#&gt; $Prediction
 #&gt; [1] 5.865367
 #&gt; 
 #&gt; $`Standard Error`
@@ -162,7 +163,8 @@
 #&gt; 
 #&gt; $`Confidence Limits`
 #&gt; [1] 3.387082 8.343652
-#&gt; </div><div class='input'><span class='fu'><a href='inverse.predict.html'>inverse.predict</a></span>(<span class='no'>m3.means</span>, <span class='fl'>90</span>, <span class='kw'>ws</span> <span class='kw'>=</span> <span class='fl'>0.145</span>) <span class='co'># 44.1 +- 7.9</span></div><div class='output co'>#&gt; $Prediction
+#&gt; </div><div class='input'><span class='fu'><a href='inverse.predict.html'>inverse.predict</a></span><span class='op'>(</span><span class='va'>m3.means</span>, <span class='fl'>90</span>, ws <span class='op'>=</span> <span class='fl'>0.145</span><span class='op'>)</span> <span class='co'># 44.1 +- 7.9</span>
+</div><div class='output co'>#&gt; $Prediction
 #&gt; [1] 44.06025
 #&gt; 
 #&gt; $`Standard Error`
@@ -176,15 +178,17 @@
 #&gt; </div><div class='input'>
 <span class='co'># The LOD is only calculated for models from unweighted regression</span>
 <span class='co'># with this version of chemCal</span>
-<span class='no'>m0</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>massart97ex3</span>)
-<span class='fu'><a href='lod.html'>lod</a></span>(<span class='no'>m0</span>)</div><div class='output co'>#&gt; $x
+<span class='va'>m0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>massart97ex3</span><span class='op'>)</span> 
+<span class='fu'><a href='lod.html'>lod</a></span><span class='op'>(</span><span class='va'>m0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $x
 #&gt; [1] 5.407085
 #&gt; 
 #&gt; $y
 #&gt; [1] 13.63911
 #&gt; </div><div class='input'>
 <span class='co'># Limit of quantification from unweighted regression</span>
-<span class='fu'><a href='loq.html'>loq</a></span>(<span class='no'>m0</span>)</div><div class='output co'>#&gt; $x
+<span class='fu'><a href='loq.html'>loq</a></span><span class='op'>(</span><span class='va'>m0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $x
 #&gt; [1] 9.627349
 #&gt; 
 #&gt; $y
@@ -195,14 +199,15 @@
 <span class='co'># If we are not using a variance function, we can use the weight from</span>
 <span class='co'># the above example as a first approximation (x = 15 is close to our</span>
 <span class='co'># loq approx 14 from above).</span>
-<span class='fu'><a href='loq.html'>loq</a></span>(<span class='no'>m3.means</span>, <span class='kw'>w.loq</span> <span class='kw'>=</span> <span class='fl'>1.67</span>)</div><div class='output co'>#&gt; $x
+<span class='fu'><a href='loq.html'>loq</a></span><span class='op'>(</span><span class='va'>m3.means</span>, w.loq <span class='op'>=</span> <span class='fl'>1.67</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $x
 #&gt; [1] 7.346195
 #&gt; 
 #&gt; $y
 #&gt; [1] 17.90777
-#&gt; </div><div class='input'># The weight for the loq should therefore be derived at x = 7.3 instead
-# of 15, but the graphical procedure of Massart (p. 201) to derive the 
-# variances on which the weights are based is quite inaccurate anyway. 
+#&gt; </div><div class='input'><span class='co'># The weight for the loq should therefore be derived at x = 7.3 instead</span>
+<span class='co'># of 15, but the graphical procedure of Massart (p. 201) to derive the </span>
+<span class='co'># variances on which the weights are based is quite inaccurate anyway. </span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -219,7 +224,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

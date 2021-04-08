@@ -87,7 +87,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +104,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="http://github.com/jranke/chemCal/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
   one-sided significance test).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lod</span>(<span class='no'>object</span>, <span class='no'>...</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='st'>"default"</span>)</pre>
+    <pre class="usage"><span class='fu'>lod</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, alpha <span class='op'>=</span> <span class='fl'>0.05</span>, beta <span class='op'>=</span> <span class='fl'>0.05</span>, method <span class='op'>=</span> <span class='st'>"default"</span>, tol <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,8 +207,9 @@
     <div class='dont-index'><p>Examples for <code><a href='din32645.html'>din32645</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>din32645</span>)
-<span class='fu'>lod</span>(<span class='no'>m</span>)</div><div class='output co'>#&gt; $x
+    <pre class="examples"><div class='input'><span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>din32645</span><span class='op'>)</span>
+<span class='fu'>lod</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span> 
+</div><div class='output co'>#&gt; $x
 #&gt; [1] 0.08655484
 #&gt; 
 #&gt; $y
@@ -216,7 +217,8 @@
 #&gt; </div><div class='input'>
 <span class='co'># The critical value (decision limit, German Nachweisgrenze) can be obtained</span>
 <span class='co'># by using beta = 0.5:</span>
-<span class='fu'>lod</span>(<span class='no'>m</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; $x
+<span class='fu'>lod</span><span class='op'>(</span><span class='va'>m</span>, alpha <span class='op'>=</span> <span class='fl'>0.01</span>, beta <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $x
 #&gt; [1] 0.0698127
 #&gt; 
 #&gt; $y
@@ -237,7 +239,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -56,7 +56,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="http://github.com/jranke/chemCal/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,13 +70,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="chemCal_files/header-attrs-2.7/header-attrs.js"></script><script src="chemCal_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to chemCal</h1>
                         <h4 class="author">Johannes Ranke</h4>
             
-            <h4 class="date">2020-05-20</h4>
+            <h4 class="date">2021-04-08</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/jranke/chemCal/blob/master/vignettes/chemCal.Rmd"><code>vignettes/chemCal.Rmd</code></a></small>
       <div class="hidden name"><code>chemCal.Rmd</code></div>
@@ -99,25 +99,29 @@
 <a href="#usage" class="anchor"></a>Usage</h1>
 <p>When calibrating an analytical method, the first task is to generate a suitable model. If we want to use the <code>chemCal</code> functions, we have to restrict ourselves to univariate, possibly weighted, linear regression so far.</p>
 <p>Once such a model has been created, the calibration can be graphically shown by using the <code>calplot</code> function:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chemCal</span>)
-<span class="no">m0</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">y</span> ~ <span class="no">x</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">massart97ex3</span>)
-<span class="fu"><a href="../reference/calplot.lm.html">calplot</a></span>(<span class="no">m0</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pkgdown.jrwb.de/chemCal">chemCal</a></span><span class="op">)</span>
+<span class="va">m0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">massart97ex3</span><span class="op">)</span>
+<span class="fu"><a href="../reference/calplot.html">calplot</a></span><span class="op">(</span><span class="va">m0</span><span class="op">)</span></code></pre></div>
 <p><img src="chemCal_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 <p>As we can see, the scatter increases with increasing x. This is also illustrated by one of the diagnostic plots for linear models provided by R:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">m0</span>, <span class="kw">which</span><span class="kw">=</span><span class="fl">3</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">m0</span>, which<span class="op">=</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p><img src="chemCal_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>Therefore, in Example 8 in <span class="citation">Massart et al. (1997)</span>, weighted regression is proposed which can be reproduced by the following code. Note that we are building the model on the mean values for each standard in order to be able to reproduce the results given in the book with the current version of chemCal.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">weights</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="no">massart97ex3</span>, {
-  <span class="no">yx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span>(<span class="no">y</span>, <span class="no">x</span>)
-  <span class="no">ybar</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">yx</span>, <span class="no">mean</span>)
-  <span class="no">s</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">yx</span>, <span class="no">sd</span>), <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">2</span>)
-  <span class="no">w</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fl">1</span> / (<span class="no">s</span>^<span class="fl">2</span>), <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">3</span>)
-})
-<span class="no">massart97ex3.means</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="no">y</span> ~ <span class="no">x</span>, <span class="no">massart97ex3</span>, <span class="no">mean</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">massart97ex3</span>, <span class="op">{</span>
+  <span class="va">yx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span>
+  <span class="va">ybar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">yx</span>, <span class="va">mean</span><span class="op">)</span>
+  <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">yx</span>, <span class="va">sd</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+  <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="va">s</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="va">massart97ex3.means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, <span class="va">massart97ex3</span>, <span class="va">mean</span><span class="op">)</span>
 
-<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">y</span> ~ <span class="no">x</span>, <span class="kw">w</span> <span class="kw">=</span> <span class="no">weights</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">massart97ex3.means</span>)</pre></body></html></div>
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, w <span class="op">=</span> <span class="va">weights</span>, data <span class="op">=</span> <span class="va">massart97ex3.means</span><span class="op">)</span></code></pre></div>
 <p>If we now want to predict a new x value from measured y values, we use the <code>inverse.predict</code> function:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/inverse.predict.html">inverse.predict</a></span>(<span class="no">m</span>, <span class="fl">15</span>, <span class="kw">ws</span><span class="kw">=</span><span class="fl">1.67</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/inverse.predict.html">inverse.predict</a></span><span class="op">(</span><span class="va">m</span>, <span class="fl">15</span>, ws<span class="op">=</span><span class="fl">1.67</span><span class="op">)</span></code></pre></div>
 <pre><code>## $Prediction
 ## [1] 5.865367
 ## 
@@ -129,7 +133,8 @@
 ## 
 ## $`Confidence Limits`
 ## [1] 3.387082 8.343652</code></pre>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/inverse.predict.html">inverse.predict</a></span>(<span class="no">m</span>, <span class="fl">90</span>, <span class="kw">ws</span> <span class="kw">=</span> <span class="fl">0.145</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/inverse.predict.html">inverse.predict</a></span><span class="op">(</span><span class="va">m</span>, <span class="fl">90</span>, ws <span class="op">=</span> <span class="fl">0.145</span><span class="op">)</span></code></pre></div>
 <pre><code>## $Prediction
 ## [1] 44.06025
 ## 
@@ -170,7 +175,7 @@ s_{\hat{x_s}} = \frac{1}{b_1} \sqrt{\frac{{s_s}^2}{w_s m} +
             {{b_1}^2 \left( \sum{w_i} \sum{w_i {x_i}^2} - {\left( \sum{ w_i x_i } \right)}^2 \right) } \right) }
 \end{equation}\]</span></p>
 <p>where I interpret <span class="math inline">\(\frac{{s_s}^2}{w_s}\)</span> as an estimator of the variance at location <span class="math inline">\(\hat{x_s}\)</span>, which can be replaced by a user-specified value using the argument <code>var.s</code> of the function <code>inverse.predict</code>.</p>
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
 <div id="ref-amc89">
 <p>Analytical Methods Committee. 1989. “Robust Statistics — How Not to Reject Outliers. Part 1. Basic Concepts.” <em>The Analyst</em> 114: 1693–7.</p>
 </div>
@@ -202,7 +207,7 @@ s_{\hat{x_s}} = \frac{1}{b_1} \sqrt{\frac{{s_s}^2}{w_s m} +
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
