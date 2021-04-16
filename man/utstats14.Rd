@@ -3,7 +3,8 @@
 \alias{utstats14}
 \title{Example data for calibration with replicates from University of Toronto}
 \description{
-  Dataset read into R from \url{http://www.chem.utoronto.ca/coursenotes/analsci/stats/files/example14.xls}.
+  Dataset read into R from 
+  \url{https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/files/example14.xls}.
 }
 \format{
   A tibble containing three replicate observations of the response for five
@@ -12,6 +13,6 @@
 \source{
   David Stone and Jon Ellis (2011) Statistics in Analytical Chemistry. Tutorial website
   maintained by the Departments of Chemistry, University of Toronto.
-  \url{http://www.chem.utoronto.ca/coursenotes/analsci/stats/index.html}
+  \url{https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/index.html}
 }
 \keyword{datasets}
