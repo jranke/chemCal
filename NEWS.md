@@ -5,6 +5,8 @@
 
 - Added the cadmium dataset from Rocke and Lorenzato (1995)
 
+- Suggest: rmarkdown as it is not a dependency of knitr any more, as pointed out by Kurt Hornik
+
 # chemCal 0.2.1
 
 - 'inverse.predict': Do not work on the means of the calibration standards any more, as this ignores the variability of y values about the means. Thanks to Anna Burniol Figols for pointing out this issue

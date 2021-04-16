@@ -4,7 +4,7 @@
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘chemCal/DESCRIPTION’ ... OK
-* this is package ‘chemCal’ version ‘0.2.3’
+* this is package ‘chemCal’ version ‘0.2.2’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
 Maintainer: ‘Johannes Ranke <jranke@uni-bremen.de>’
