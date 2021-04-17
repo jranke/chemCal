@@ -55,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://github.com/jranke/chemCal/">
+  <a href="https://github.com/jranke/chemCal/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -76,9 +76,9 @@
       <h1 data-toc-skip>Introduction to chemCal</h1>
                         <h4 class="author">Johannes Ranke</h4>
             
-            <h4 class="date">2021-04-08</h4>
+            <h4 class="date">2021-04-17</h4>
       
-      <small class="dont-index">Source: <a href="http://github.com/jranke/chemCal/blob/master/vignettes/chemCal.Rmd"><code>vignettes/chemCal.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jranke/chemCal/blob/master/vignettes/chemCal.Rmd"><code>vignettes/chemCal.Rmd</code></a></small>
       <div class="hidden name"><code>chemCal.Rmd</code></div>
 
     </div>
@@ -100,7 +100,7 @@
 <p>When calibrating an analytical method, the first task is to generate a suitable model. If we want to use the <code>chemCal</code> functions, we have to restrict ourselves to univariate, possibly weighted, linear regression so far.</p>
 <p>Once such a model has been created, the calibration can be graphically shown by using the <code>calplot</code> function:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pkgdown.jrwb.de/chemCal">chemCal</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pkgdown.jrwb.de/chemCal/">chemCal</a></span><span class="op">)</span>
 <span class="va">m0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">massart97ex3</span><span class="op">)</span>
 <span class="fu"><a href="../reference/calplot.html">calplot</a></span><span class="op">(</span><span class="va">m0</span><span class="op">)</span></code></pre></div>
 <p><img src="chemCal_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>

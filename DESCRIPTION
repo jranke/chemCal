@@ -9,7 +9,7 @@ Suggests: MASS, knitr, testthat, investr, covr, rmarkdown
 Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
 	according to the Handbook of Chemometrics and Qualimetrics: Part A
-	by Massart et al. There are also functions estimating the limit
+	by Massart et al. (1997) There are also functions estimating the limit
 	of detection (LOD) and limit of quantification (LOQ).
 	The functions work on model objects from - optionally weighted - linear
 	regression (lm) or robust linear regression ('rlm' from the 'MASS' package).
