@@ -18,7 +18,7 @@ pkgfiles = \
 	man/* \
 	NAMESPACE \
 	NEWS.md \
-	README.html \
+	README.md \
 	R/* \
 	tests/* \
 	tests/testthat*
@@ -30,8 +30,9 @@ $(TGZ): $(pkgfiles) vignettes
 
 build: $(TGZ)
 
-README.html: README.md
-	"$(RBIN)/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document')"
+README.html: README.rmd
+	"$(RBIN)/Rscript" -e "rmarkdown::render('README.rmd', clean = FALSE)"
+	mv README.knit.md README.md
 
 install: build
 	"$(RBIN)/R" CMD INSTALL $(TGZ)
@@ -56,7 +57,7 @@ winbuilder: build
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
 
 test: install
-	NOT_CRAN=true "$(RBIN)/Rscript" -e 'devtools::test()' 2>&1 | tee test.log
+	NOT_CRAN=true "$(RBIN)/Rscript" -e 'options(cli.dynamic = TRUE); devtools::test()' 2>&1 | tee test.log
 	sed -i -e "s/\r.*\r//" test.log
 
 clean:

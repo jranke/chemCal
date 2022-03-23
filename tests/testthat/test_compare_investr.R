@@ -1,12 +1,12 @@
+if (requireNamespace("investr")) {
+
 context("Compare with investr::calibrate")
 
-library(chemCal)
-library(investr)
-
 test_that("Unweighted regressions give same results as investr::calibrate using the Wald method", {
+
   compare_investr <- function(object, y_sample) {
     pred_chemCal <- inverse.predict(object, y_sample)
-    pred_investr <- calibrate(object, y_sample, interval = "Wald")
+    pred_investr <- investr::calibrate(object, y_sample, interval = "Wald")
     expect_equivalent(pred_chemCal[["Prediction"]], 
                       pred_investr$estimate)
     expect_equivalent(pred_chemCal[["Standard Error"]], 
@@ -28,3 +28,5 @@ test_that("Unweighted regressions give same results as investr::calibrate using 
   m_m3 <- lm(y ~ x, massart97ex3)
   compare_investr(m_m3, 15)
 })
+
+}

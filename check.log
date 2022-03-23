@@ -1,13 +1,18 @@
 * using log directory ‘/home/jranke/git/chemCal/chemCal.Rcheck’
-* using R version 4.0.5 (2021-03-31)
+* using R version 4.1.3 (2022-03-10)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘chemCal/DESCRIPTION’ ... OK
-* this is package ‘chemCal’ version ‘0.2.2’
+* this is package ‘chemCal’ version ‘0.2.3’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
-Maintainer: ‘Johannes Ranke <jranke@uni-bremen.de>’
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Johannes Ranke <johannes.ranke@jrwb.de>’
+
+New maintainer:
+  Johannes Ranke <johannes.ranke@jrwb.de>
+Old maintainer(s):
+  Johannes Ranke <jranke@uni-bremen.de>
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -52,6 +57,7 @@ Maintainer: ‘Johannes Ranke <jranke@uni-bremen.de>’
 * checking for unstated dependencies in examples ... OK
 * checking contents of ‘data’ directory ... OK
 * checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
 * checking installed files from ‘inst/doc’ ... OK
 * checking files in ‘vignettes’ ... OK
@@ -68,5 +74,9 @@ Maintainer: ‘Johannes Ranke <jranke@uni-bremen.de>’
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: OK
+Status: 1 NOTE
+See
+  ‘/home/jranke/git/chemCal/chemCal.Rcheck/00check.log’
+for details.
+
 

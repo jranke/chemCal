@@ -35,7 +35,7 @@ At the moment, the package consists of four functions
 working on univariate linear models of class `lm` or `rlm`, plus several
 datasets for validation.
 
-A [bug report](https://bugs.r-project.org/bugzilla/show_bug.cgi?id=8877)
+A [bug report](https://bugs.r-project.org/show_bug.cgi?id=8877)
 and the following e-mail exchange on the r-devel mailing list about
 prediction intervals from weighted regression entailed some further studies
 on this subject. However, I did not encounter any proof or explanation of the

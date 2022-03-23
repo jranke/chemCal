@@ -1,3 +1,6 @@
+# chemCal 0.2.3
+
+- Make the use of the 'investr' package conditional in testthat tests, update maintainer e-mail address
 
 # chemCal 0.2.2
 
