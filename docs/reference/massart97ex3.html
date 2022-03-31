@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calibration data from Massart et al. (1997), example 3</h1>
-    
+    <small class="dont-index">Source: <a href="https://github.com/jranke/chemCal/blob/HEAD/R/chemCal-package.R" class="external-link"><code>R/chemCal-package.R</code></a></small>
     <div class="hidden name"><code>massart97ex3.Rd</code></div>
     </div>
 
@@ -55,25 +55,23 @@
     <p>Sample dataset from p. 188 to test the package.</p>
     </div>
 
-    <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">massart97ex3</span></code></pre></div>
-    </div>
 
     <div id="format">
     <h2>Format</h2>
-    <p>A dataframe containing 6 levels of x values with 5
-  observations of y for each level.</p>
+    <p>A dataframe containing 6 levels of x values with 5 observations of y
+for each level.</p>
     </div>
     <div id="source">
     <h2>Source</h2>
-    <p>Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S., Lewi, P.J.,
-  Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and Qualimetrics: Part A,
-  Chapter 8.</p>
+    <p>Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S.,
+Lewi, P.J., Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and
+Qualimetrics: Part A, Chapter 8.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># For reproducing the results for replicate standard measurements in example 8,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in"><span class="co"># For reproducing the results for replicate standard measurements in example 8,</span></span>
 <span class="r-in"><span class="co"># we need to do the calibration on the means when using chemCal &gt; 0.2</span></span>
 <span class="r-in"><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">massart97ex3</span>, <span class="op">{</span></span>
 <span class="r-in">  <span class="va">yx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span></span>
@@ -149,6 +147,7 @@
 <span class="r-in"><span class="co"># The weight for the loq should therefore be derived at x = 7.3 instead</span></span>
 <span class="r-in"><span class="co"># of 15, but the graphical procedure of Massart (p. 201) to derive the </span></span>
 <span class="r-in"><span class="co"># variances on which the weights are based is quite inaccurate anyway. </span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>

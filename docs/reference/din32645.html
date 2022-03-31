@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calibration data from DIN 32645</h1>
-    
+    <small class="dont-index">Source: <a href="https://github.com/jranke/chemCal/blob/HEAD/R/chemCal-package.R" class="external-link"><code>R/chemCal-package.R</code></a></small>
     <div class="hidden name"><code>din32645.Rd</code></div>
     </div>
 
@@ -55,9 +55,6 @@
     <p>Sample dataset to test the package.</p>
     </div>
 
-    <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">din32645</span><span class="op">)</span></code></pre></div>
-    </div>
 
     <div id="format">
     <h2>Format</h2>
@@ -66,18 +63,19 @@
     <div id="references">
     <h2>References</h2>
     <p>DIN 32645 (equivalent to ISO 11843), Beuth Verlag, Berlin, 1994</p>
-<p>Dintest. Plugin for MS Excel for evaluations of calibration data. Written
-  by Georg Schmitt, University of Heidelberg. Formerly available from
-  the Website of the University of Heidelberg.</p>
-<p>Currie, L. A. (1997) Nomenclature in evaluation of analytical methods including
-  detection and quantification capabilities (IUPAC Recommendations 1995). 
-  Analytica Chimica Acta 391, 105 - 126.</p>
+<p>Dintest. Plugin for MS Excel for evaluations of calibration data. Written by
+Georg Schmitt, University of Heidelberg. Formerly available from the Website
+of the University of Heidelberg.</p>
+<p>Currie, L. A. (1997) Nomenclature in evaluation of analytical methods
+including detection and quantification capabilities (IUPAC Recommendations
+1995).  Analytica Chimica Acta 391, 105 - 126.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">din32645</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="calplot.lm.html">calplot</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">din32645</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="calplot.html">calplot</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="din32645-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Prediction of x with confidence interval</span></span>
@@ -118,6 +116,7 @@
 <span class="r-in"><span class="co"># LQ = 3.04 * LC (Currie 1999, p. 120)</span></span>
 <span class="r-in"><span class="fl">3.04</span> <span class="op">*</span> <span class="fu"><a href="lod.html">lod</a></span><span class="op">(</span><span class="va">m</span>, alpha <span class="op">=</span> <span class="fl">0.01</span>, beta <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">$</span><span class="va">x</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2122306</span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>

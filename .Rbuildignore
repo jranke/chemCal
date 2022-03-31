@@ -4,6 +4,7 @@ check.log$
 chemCal_.*.tar.gz
 docs
 _pkgdown.yml
+README.rmd
 README.html
 .travis.yml
 experimental

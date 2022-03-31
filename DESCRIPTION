@@ -20,4 +20,4 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 BugReports: https://github.com/jranke/chemCal/issues
 URL: https://pkgdown.jrwb.de/chemCal/, https://cgit.jrwb.de/chemCal/about
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2

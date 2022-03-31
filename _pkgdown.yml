@@ -2,3 +2,19 @@ title: chemCal
 
 template:
   bootswatch: spacelab
+
+reference:
+  - title: Main functions
+    contents:
+      - calplot
+      - lod
+      - loq
+      - inverse.predict
+  - title: Datasets
+    contents:
+      - din32645
+      - massart97ex1
+      - massart97ex3
+      - rl95_cadmium
+      - rl95_toluene
+      - utstats14

@@ -1,3 +1,45 @@
+#' Plot calibration graphs from univariate linear models
+#' 
+#' Produce graphics of calibration data, the fitted model as well as
+#' confidence, and, for unweighted regression, prediction bands.
+#' 
+#' @aliases calplot calplot.default calplot.lm
+#' @param object A univariate model object of class \code{\link{lm}} or
+#' \code{\link[MASS:rlm]{rlm}} with model formula \code{y ~ x} or \code{y ~ x -
+#' 1}.
+#' @param xlim The limits of the plot on the x axis.
+#' @param ylim The limits of the plot on the y axis.
+#' @param xlab The label of the x axis.
+#' @param ylab The label of the y axis.
+#' @param legend_x An optional numeric value for adjusting the x coordinate of
+#' the legend.
+#' @param alpha The error tolerance level for the confidence and prediction
+#' bands. Note that this includes both tails of the Gaussian distribution,
+#' unlike the alpha and beta parameters used in \code{\link{lod}} (see note
+#' below).
+#' @param varfunc The variance function for generating the weights in the
+#' model.  Currently, this argument is ignored (see note below).
+#' @return A plot of the calibration data, of your fitted model as well as
+#' lines showing the confidence limits. Prediction limits are only shown for
+#' models from unweighted regression.
+#' @note Prediction bands for models from weighted linear regression require
+#' weights for the data, for which responses should be predicted. Prediction
+#' intervals using weights e.g. from a variance function are currently not
+#' supported by the internally used function \code{\link{predict.lm}},
+#' therefore, \code{calplot} does not draw prediction bands for such models.
+#' 
+#' It is possible to compare the \code{\link{calplot}} prediction bands with
+#' the \code{\link{lod}} values if the \code{lod()} alpha and beta parameters
+#' are half the value of the \code{calplot()} alpha parameter.
+#' @author Johannes Ranke
+#' @importFrom graphics legend matlines plot points
+#' @examples
+#' 
+#' data(massart97ex3)
+#' m <- lm(y ~ x, data = massart97ex3)
+#' calplot(m)
+#' 
+#' @export calplot
 calplot <- function(object, 
   xlim = c("auto", "auto"), ylim = c("auto", "auto"), 
   xlab = "Concentration", ylab = "Response",
@@ -7,6 +49,7 @@ calplot <- function(object,
   UseMethod("calplot")
 }
 
+#' @export
 calplot.default <- function(object, 
   xlim = c("auto","auto"), ylim = c("auto","auto"), 
   xlab = "Concentration", ylab = "Response",
@@ -16,6 +59,7 @@ calplot.default <- function(object,
   stop("Calibration plots only implemented for univariate lm objects.")
 }
 
+#' @export
 calplot.lm <- function(object,
   xlim = c("auto","auto"), ylim = c("auto","auto"), 
   xlab = "Concentration", ylab = "Response",

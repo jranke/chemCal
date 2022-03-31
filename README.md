@@ -139,5 +139,5 @@ inverse.predict(m0, c(91, 89, 87, 93, 90))
 You can use the R help system to view documentation, or you can
 have a look at the [online documentation][pd-site].
 
-[r-project]: https://r-project.org
-[pd-site]: https://pkgdown.jrwb.de/chemCal
+[r-project]: https://www.r-project.org/
+[pd-site]: https://pkgdown.jrwb.de/chemCal/
