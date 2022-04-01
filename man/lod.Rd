@@ -52,13 +52,15 @@ is present (type II or false negative error), is beta (also a one-sided
 significance test).
 }
 \note{
-* The default values for alpha and beta are the ones recommended by IUPAC.
-* The estimation of the LOD in terms of the analyte amount/concentration xD
+\itemize{
+\item The default values for alpha and beta are the ones recommended by IUPAC.
+\item The estimation of the LOD in terms of the analyte amount/concentration xD
 from the LOD in the signal domain SD is done by simply inverting the
 calibration function (i.e. assuming a known calibration function).
-* The calculation of a LOD from weighted calibration models requires a
+\item The calculation of a LOD from weighted calibration models requires a
 weights argument for the internally used \code{\link{predict.lm}}
 function, which is currently not supported in R.
+}
 }
 \examples{
 

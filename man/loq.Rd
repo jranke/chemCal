@@ -61,10 +61,12 @@ where c(L) is half of the length of the confidence interval at the limit L
 \code{\link{inverse.predict}}, and L is obtained by iteration.
 }
 \note{
-* IUPAC recommends to base the LOQ on the standard deviation of the
+\itemize{
+\item IUPAC recommends to base the LOQ on the standard deviation of the
 signal where x = 0.
-* The calculation of a LOQ based on weighted regression is non-standard and
+\item The calculation of a LOQ based on weighted regression is non-standard and
 therefore not tested. Feedback is welcome.
+}
 }
 \examples{
 

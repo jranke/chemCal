@@ -24,7 +24,7 @@ significance test)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chemCal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9000</span>
       </span>
     </div>
 
@@ -110,14 +110,15 @@ limit of detection of a model used for calibration.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p>* The default values for alpha and beta are the ones recommended by IUPAC.
-* The estimation of the LOD in terms of the analyte amount/concentration xD
+    
+<ul><li><p>The default values for alpha and beta are the ones recommended by IUPAC.</p></li>
+<li><p>The estimation of the LOD in terms of the analyte amount/concentration xD
 from the LOD in the signal domain SD is done by simply inverting the
-calibration function (i.e. assuming a known calibration function).
-* The calculation of a LOD from weighted calibration models requires a
+calibration function (i.e. assuming a known calibration function).</p></li>
+<li><p>The calculation of a LOD from weighted calibration models requires a
 weights argument for the internally used <code><a href="https://rdrr.io/r/stats/predict.lm.html" class="external-link">predict.lm</a></code>
-function, which is currently not supported in R.</p>
-    </div>
+function, which is currently not supported in R.</p></li>
+</ul></div>
     <div id="references">
     <h2>References</h2>
     <p>Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong,
