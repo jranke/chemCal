@@ -21,4 +21,4 @@ Encoding: UTF-8
 BugReports: https://github.com/jranke/chemCal/issues
 URL: https://pkgdown.jrwb.de/chemCal/, https://cgit.jrwb.de/chemCal/about
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2

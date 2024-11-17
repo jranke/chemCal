@@ -28,16 +28,19 @@ all: build
 $(TGZ): $(pkgfiles) vignettes
 	"$(RBIN)/R" CMD build . 2>&1 | tee build.log
 
-build: $(TGZ)
+roxy:
+	Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'collate', 'namespace'))"
+
+build: roxy $(TGZ)
 
 README.html: README.rmd
 	"$(RBIN)/Rscript" -e "rmarkdown::render('README.rmd', clean = FALSE)"
 	mv README.knit.md README.md
 
-install: build
+install: roxy build
 	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
-check: build
+check: roxy build
 	"$(RBIN)/R" CMD check --as-cran $(TGZ) 2>&1 | tee check.log
 
 vignettes/%.html: vignettes/%.Rmd vignettes/refs.bib
@@ -65,3 +68,6 @@ clean:
 	$(RM) -r vignettes/*_files
 	$(RM) -r vignettes/*.R
 	$(RM) Rplots.pdf
+
+
+.PHONY: roxy build install check pd winbuilder test clean
