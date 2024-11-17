@@ -8,7 +8,7 @@
 [![](https://www.r-pkg.org/badges/version/chemCal)](https://cran.r-project.org/package=chemCal)
 [![Build
 Status](https://app.travis-ci.com/jranke/chemCal.svg?token=Sq9VuYWyRz2FbBLxu6DK&branch=main)](https://app.travis-ci.com/jranke/chemCal)
-[![codecov](https://codecov.io/github/jranke/chemCal/branch/master/graphs/badge.svg)](https://codecov.io/github/jranke/chemCal)
+[![Codecov test coverage](https://codecov.io/gh/jranke/chemCal/graph/badge.svg)](https://app.codecov.io/gh/jranke/chemCal)
 <!-- badges: end -->
 
 ## Overview
