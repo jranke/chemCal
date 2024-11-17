@@ -13,7 +13,7 @@
 #' calibration standard is assumed not to vary greatly within the linear range.
 #' 
 #' The use of the Mandel test is discouraged due to its limitations in the 
-#' identification of non-linear behaviour of calibration courves (Andrade and 
+#' identification of non-linear behaviour of calibration curves (Andrade and 
 #' Gomes-Carracedo, 2013). 
 #' 
 #' @param x numeric vector of independent values (usually concentrations).
@@ -21,9 +21,9 @@
 #' analytical device).
 #' @param method character string. Supported methods are "slope" and 
 #' "curvature".
-#' @param tolerance numeric value describing the acceptable deviation from the 
-#' median of the slopes or the signal-to-concentration ratio. The default 
-#' tolerance is 10%.
+#' @param tolerance numeric value between 0 and 1, describing the acceptable
+#' deviation from the median of the slopes or the signal-to-concentration
+#' ratio. The default tolerance is 10%.
 #' @return returns a diagnostic plot 
 #' 
 #' @author Anil Axel Tellbüscher
@@ -32,6 +32,7 @@
 #' @importFrom stats median
 #' 
 #' @examples
+#' data(din32645)
 #' # Point-to-point slope plot
 #' linearity(din32645$x, din32645$y, method = "slope")
 #' 
@@ -47,23 +48,13 @@
 #' 
 #' @export
 # Function to assess linearity of data using either slope or curvature method
-linearity <- function(x, y, method = NULL, tolerance = 0.1) {
+linearity <- function(x, y, method = c("slope", "curvature"), tolerance = 0.1) {
   
   # Check data integrity
   # Ensure that x and y vectors have the same length
   stopifnot("x and y must have the same length!" = length(x) == length(y))
   
-  # Ensure that a method has been specified
-  stopifnot("Method must be defined!\n
-            Select either 'slope' for the point-to-point slope or 'curvature' 
-            for the empirical curvature test" = 
-              !is.null(method))
-  
-  # Validate that the method is either 'slope' or 'curvature'
-  stopifnot("Invalid input!\n
-            Select either 'slope' for the point-to-point slope or 'curvature' 
-            for the empirical curvature test" = 
-              method %in% c("slope", "curvature"))
+  method <- match.arg(method)
   
   # Calculate the 'result' based on the chosen method
   if (method == "slope") {
