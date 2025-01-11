@@ -26,19 +26,21 @@
 #' ratio. The default tolerance is 10%.
 #' @return returns a diagnostic plot 
 #' 
-#' @author Anil Axel Tellbüscher
+#' @author Anıl Axel Tellbüscher
 #' 
 #' @importFrom graphics abline
 #' @importFrom graphics lines
 #' @importFrom stats median
 #' 
 #' @examples
-#' data(din32645)
+#' # Continuous Flow Analysis (CFA) data
+#' data(din38402b1)
+#' 
 #' # Point-to-point slope plot
-#' linearity(din32645$x, din32645$y, method = "slope")
+#' linearity(din38402b1$conc, din38402b1$ext, method = "slope")
 #' 
 #' # Curvature plot
-#' linearity(din32645$x, din32645$y, method = "curvature", tolerance = 0.2)
+#' linearity(din38402b1$conc, din38402b1$ext, method = "curvature")
 #' 
 #' @references ISO 8466-1:2021. Water quality — Calibration and evaluation of 
 #' analytical methods — Part 1: Linear calibration function
