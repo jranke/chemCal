@@ -29,6 +29,7 @@
 #' @author Anil Axel Tellbüscher
 #' 
 #' @importFrom graphics abline
+#' @importFrom graphics lines
 #' @importFrom stats median
 #' 
 #' @examples
