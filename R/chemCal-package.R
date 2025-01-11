@@ -192,3 +192,77 @@ NULL
 
 
 
+
+
+#' Nitrite calibration data
+#' 
+#' Example dataset B.1 from DIN 38402 with concentrations in µg/L and the extinction
+#' as response measured using continuous flow analysis (CFA) according to 
+#' ISO 13395.
+#' 
+#' @name din38402b1
+#' @docType data
+#' @format A tibble containing 12 concentration levels with the respective 
+#' instrument response values.
+#' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
+#' https://dx.doi.org/10.31030/2657448
+#' @keywords datasets
+NULL
+
+
+
+
+
+#' Copper calibration data
+#' 
+#' Example dataset B.3 from DIN 38402. Cu was measured according to ISO 11885,
+#' using ICP-OES. The concentration are reported in mg/L and the response as 
+#' counts/s, describing the count of photons that are detected by the 
+#' photomultiplier detector of the device.
+#' 
+#' @name din38402b3
+#' @docType data
+#' @format A tibble containing 13 concentration levels and the respective 
+#' instrument response values.
+#' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
+#' https://dx.doi.org/10.31030/2657448
+#' @keywords datasets
+NULL
+
+
+
+
+
+#' Carbamazepin calibration data
+#' 
+#' Example dataset B.6 from DIN 38402 measured using LC-MS/MS. The 
+#' concentrations are reported in in µg/L and the response in arbitrary
+#' units (AU).
+#' 
+#' @name din38402b6
+#' @docType data
+#' @format A tibble containing 12 concentration levels and the respective 
+#' instrument response values.
+#' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
+#' https://dx.doi.org/10.31030/2657448
+#' @keywords datasets
+NULL
+
+
+
+
+
+#' Iron calibration data
+#' 
+#' Example dataset C.3 from DIN 38402 determined by ion chromatography.
+#' Concentrations are reported in mg/L and the extinction as response.
+#' 
+#' @name din38402c3
+#' @docType data
+#' @format A tibble containing 10 concentration levels and the respective 
+#' response values.
+#' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
+#' https://dx.doi.org/10.31030/2657448
+#' @keywords datasets
+NULL
+
