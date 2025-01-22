@@ -14,6 +14,9 @@ Tutorial website maintained by the Departments of Chemistry, University of
 Toronto.
 \url{https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/index.html}
 }
+\usage{
+utstats14
+}
 \description{
 Dataset read into R from
 \url{https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/files/example14.xls}.

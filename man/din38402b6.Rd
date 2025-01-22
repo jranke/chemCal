@@ -8,6 +8,9 @@
 A tibble containing 12 concentration levels and the respective
 instrument response values.
 }
+\usage{
+din38402b6
+}
 \description{
 Example dataset B.6 from DIN 38402 measured using LC-MS/MS. The
 concentrations are reported in in µg/L and the response in arbitrary

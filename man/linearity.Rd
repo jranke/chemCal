@@ -41,12 +41,14 @@ identification of non-linear behaviour of calibration curves (Andrade and
 Gomes-Carracedo, 2013).
 }
 \examples{
-data(din32645)
+# Continuous Flow Analysis (CFA) data
+data(din38402b1)
+
 # Point-to-point slope plot
-linearity(din32645$x, din32645$y, method = "slope")
+linearity(din38402b1$conc, din38402b1$ext, method = "slope")
 
 # Curvature plot
-linearity(din32645$x, din32645$y, method = "curvature", tolerance = 0.2)
+linearity(din38402b1$conc, din38402b1$ext, method = "curvature")
 
 }
 \references{
@@ -58,5 +60,5 @@ Mandel's test to check for nonlinearity in laboratory calibrations.
 Analytical Methods 5(5), 1145 - 1149.
 }
 \author{
-Anil Axel Tellbüscher
+Anıl Axel Tellbüscher
 }

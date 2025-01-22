@@ -8,6 +8,9 @@
 A tibble containing 12 concentration levels with the respective
 instrument response values.
 }
+\usage{
+din38402b1
+}
 \description{
 Example dataset B.1 from DIN 38402 with concentrations in µg/L and the extinction
 as response measured using continuous flow analysis (CFA) according to

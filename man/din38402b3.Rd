@@ -8,6 +8,9 @@
 A tibble containing 13 concentration levels and the respective
 instrument response values.
 }
+\usage{
+din38402b3
+}
 \description{
 Example dataset B.3 from DIN 38402. Cu was measured according to ISO 11885,
 using ICP-OES. The concentration are reported in mg/L and the response as

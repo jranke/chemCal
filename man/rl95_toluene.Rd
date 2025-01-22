@@ -12,6 +12,9 @@ six calibration standards.
 Rocke, David M. und Lorenzato, Stefan (1995) A two-component model
 for measurement error in analytical chemistry. Technometrics 37(2), 176-184.
 }
+\usage{
+rl95_toluene
+}
 \description{
 Dataset reproduced from Table 4 in Rocke and Lorenzato (1995). The toluene
 amount in the calibration samples is given in picograms per 100 µL.

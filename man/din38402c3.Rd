@@ -8,6 +8,9 @@
 A tibble containing 10 concentration levels and the respective
 response values.
 }
+\usage{
+din38402c3
+}
 \description{
 Example dataset C.3 from DIN 38402 determined by ion chromatography.
 Concentrations are reported in mg/L and the extinction as response.

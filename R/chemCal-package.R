@@ -54,7 +54,7 @@
 #' # LQ = 3.04 * LC (Currie 1999, p. 120)
 #' 3.04 * lod(m, alpha = 0.01, beta = 0.5)$x
 #' 
-NULL
+"din32645"
 
 
 
@@ -72,7 +72,7 @@ NULL
 #' Lewi, P.J., Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and
 #' Qualimetrics: Part A, Chapter 8.
 #' @keywords datasets
-NULL
+"massart97ex1"
 
 
 
@@ -128,7 +128,7 @@ NULL
 #' # of 15, but the graphical procedure of Massart (p. 201) to derive the 
 #' # variances on which the weights are based is quite inaccurate anyway. 
 #' 
-NULL
+"massart97ex3"
 
 
 
@@ -147,7 +147,7 @@ NULL
 #' @source Rocke, David M. und Lorenzato, Stefan (1995) A two-component model
 #' for measurement error in analytical chemistry. Technometrics 37(2), 176-184.
 #' @keywords datasets
-NULL
+"rl95_cadmium"
 
 
 
@@ -167,7 +167,7 @@ NULL
 #' @source Rocke, David M. und Lorenzato, Stefan (1995) A two-component model
 #' for measurement error in analytical chemistry. Technometrics 37(2), 176-184.
 #' @keywords datasets
-NULL
+"rl95_toluene"
 
 
 
@@ -188,7 +188,7 @@ NULL
 #' Toronto.
 #' \url{https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/index.html}
 #' @keywords datasets
-NULL
+"utstats14"
 
 
 
@@ -207,7 +207,7 @@ NULL
 #' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
 #' https://dx.doi.org/10.31030/2657448
 #' @keywords datasets
-NULL
+"din38402b1"
 
 
 
@@ -227,7 +227,7 @@ NULL
 #' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
 #' https://dx.doi.org/10.31030/2657448
 #' @keywords datasets
-NULL
+"din38402b3"
 
 
 
@@ -246,7 +246,7 @@ NULL
 #' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
 #' https://dx.doi.org/10.31030/2657448
 #' @keywords datasets
-NULL
+"din38402b6"
 
 
 
@@ -264,5 +264,5 @@ NULL
 #' @references DIN 38402-51:2017-05, Beuth Verlag, Berlin. 
 #' https://dx.doi.org/10.31030/2657448
 #' @keywords datasets
-NULL
+"din38402c3"
 

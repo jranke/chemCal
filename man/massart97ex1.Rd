@@ -12,6 +12,9 @@ Massart, L.M, Vandenginste, B.G.M., Buydens, L.M.C., De Jong, S.,
 Lewi, P.J., Smeyers-Verbeke, J. (1997) Handbook of Chemometrics and
 Qualimetrics: Part A, Chapter 8.
 }
+\usage{
+massart97ex1
+}
 \description{
 Sample dataset from p. 175 to test the package.
 }

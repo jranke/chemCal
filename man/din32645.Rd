@@ -7,6 +7,9 @@
 \format{
 A dataframe containing 10 rows of x and y values.
 }
+\usage{
+din32645
+}
 \description{
 Sample dataset to test the package.
 }
