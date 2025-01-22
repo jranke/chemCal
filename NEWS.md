@@ -1,3 +1,7 @@
+# chemCal 0.2.3.9000
+
+- 'R/linearity.R', 'data/din38402*.rda': Add linearity tests and data from DIN 38402 using a pull request by Anil Axel Tellbüscher
+
 # chemCal 0.2.3
 
 - Make the use of the 'investr' package conditional in testthat tests, update maintainer e-mail address
