@@ -1,18 +1,19 @@
 * using log directory ‘/home/jranke/git/chemCal/chemCal.Rcheck’
-* using R version 4.1.3 (2022-03-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
+* using R version 4.4.2 (2024-10-31)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Debian 12.2.0-14) 12.2.0
+    GNU Fortran (Debian 12.2.0-14) 12.2.0
+* running under: Debian GNU/Linux 12 (bookworm)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘chemCal/DESCRIPTION’ ... OK
-* this is package ‘chemCal’ version ‘0.2.3’
+* this is package ‘chemCal’ version ‘0.2.3.9000’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... NOTE
+* checking CRAN incoming feasibility ... [3s/15s] NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@jrwb.de>’
 
-New maintainer:
-  Johannes Ranke <johannes.ranke@jrwb.de>
-Old maintainer(s):
-  Johannes Ranke <jranke@uni-bremen.de>
+Version contains large components (0.2.3.9000)
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -21,18 +22,18 @@ Old maintainer(s):
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
-* checking serialization versions ... OK
 * checking whether package ‘chemCal’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
-* checking for future file timestamps ... OK
+* checking for future file timestamps ... NOTE
+unable to verify current time
 * checking ‘build’ directory ... OK
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... OK
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
-* checking R files for non-ASCII characters ... OK
+* checking code files for non-ASCII characters ... OK
 * checking R files for syntax errors ... OK
 * checking whether the package can be loaded ... OK
 * checking whether the package can be loaded with stated dependencies ... OK
@@ -67,16 +68,16 @@ Old maintainer(s):
   Running ‘testthat.R’
  OK
 * checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
+* checking package vignettes ... OK
 * checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
+* checking HTML version of manual ... OK
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: 1 NOTE
+Status: 2 NOTEs
 See
   ‘/home/jranke/git/chemCal/chemCal.Rcheck/00check.log’
 for details.
-
 

@@ -1,10 +1,14 @@
 Package: chemCal
 Version: 0.2.3.9000
-Date: 2024-11-17
+Date: 2025-01-25
 Title: Calibration Functions for Analytical Chemistry
-Authors@R: c(person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
-                    email = "johannes.ranke@jrwb.de",
-                    comment = c(ORCID = "0000-0003-4371-6538")))
+Authors@R: c(
+  person(c("Anıl", "A."), "Tellbüscher", role = "aut",
+    comment = "Linearity tests"),
+  person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
+    email = "johannes.ranke@jrwb.de",
+    comment = c(ORCID = "0000-0003-4371-6538")))
+Depends: R (>= 3.5.0)
 Suggests: MASS, knitr, testthat, investr, covr, rmarkdown
 Description: Simple functions for plotting linear
 	calibration functions and estimating standard errors for measurements
