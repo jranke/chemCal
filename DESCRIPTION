@@ -3,7 +3,7 @@ Version: 0.2.3.9000
 Date: 2025-01-25
 Title: Calibration Functions for Analytical Chemistry
 Authors@R: c(
-  person(c("Anil", "A."), "Tellbuescher", role = "aut",
+  person(c("Anıl", "A."), "Tellbüscher", role = "aut",
     comment = "Linearity tests"),
   person("Johannes", "Ranke", role = c("aut", "cre", "cph"), 
     email = "johannes.ranke@jrwb.de",
